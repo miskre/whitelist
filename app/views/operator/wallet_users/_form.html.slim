@@ -1,0 +1,20 @@
+= form_for @wallet_user, url: path do |f|
+  - if @wallet_user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@wallet_user.errors.count, "error")} prohibited this wallet_user from being saved:"
+      ul
+        - @wallet_user.errors.full_messages.each do |message|
+          li = message
+  .row
+    .col-sm-9
+      .form-group
+        = f.label :email
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :email_confirmed
+        = f.check_box :email_confirmed
+      .actions
+        = f.submit class: 'btn btn-sm btn-primary space-15'

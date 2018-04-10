@@ -1,0 +1,6 @@
+Hi <# UserEmail #>,
+
+Thank you for using MISKRE this time.
+We will inform you that there was a login with your account.
+
+Date and time: <# TimeNow #>

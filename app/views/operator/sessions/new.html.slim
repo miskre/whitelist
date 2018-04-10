@@ -1,0 +1,9 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  .
+    .
+    = form_for :session, url: operator_sign_in_path, :html => {class: 'm-t'} do |f|
+      .form-group
+        = f.text_field :nickname, class: 'form-control', placeholder: 'UserID', autofocus: true
+      .form-group
+        = f.password_field :password, class: 'form-control', placeholder: 'Password'
+      = f.submit 'Sign in', class: 'btn btn-primary block full-width m-b'

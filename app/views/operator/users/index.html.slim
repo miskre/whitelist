@@ -1,0 +1,28 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Users
+        .ibox-content
+          .row
+            table.table
+              thead
+                tr
+                  th Nickname
+                  th Operator authority
+                  th
+                  th
+                  th
+              tbody
+                - @operator_users.each do |operator_user|
+                  tr
+                    td = operator_user.nickname
+                    td = operator_user.authority.t
+                    td = link_to 'Show', operator_user
+                    td = link_to 'Edit', edit_operator_user_path(operator_user)
+                    td = link_to 'Destroy', operator_user, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+#small-chat
+  = link_to new_operator_user_path, class: 'open-small-chat'
+    i.fa.fa-plus

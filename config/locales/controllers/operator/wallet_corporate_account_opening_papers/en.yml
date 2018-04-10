@@ -1,0 +1,6 @@
+en:
+  operator/wallet_corporate_account_opening_papers_controller:
+    create:
+      notice: 'Corporate account opening paper was successfully created.'
+    destroy:
+      notice: 'Corporate account opening paper was successfully removed.'

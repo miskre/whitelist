@@ -1,0 +1,37 @@
+.wrapper.wrapper-content.animdeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 #{ t '.title' }
+        .ibox-content
+
+          = form_for @broadcast_mail do |f|
+
+            .form-group
+              = f.label :users, t('.wallet_users')
+              = f.select :user_ids, options_from_collection_for_select(User.all, :id, :email), {}, class: 'form-control', multiple: true
+
+            .form-grop
+              label
+                = f.check_box :send_all_customers, {}, true, false
+                = t '.send_all_customers'
+
+            .form-group
+              = f.label :subject, t('.subject')
+              = f.text_field :subject, class: 'form-control'
+
+            .form-group
+              = f.label :body, t('.body')
+              = f.text_area :body, class: 'form-control', rows: 20
+            
+            dl
+              dt
+                | *available words
+              dd <# UserID #>
+              dd <# UserEmail #>
+              dd <# TimeNow #>
+              
+
+            .form-group
+              = f.submit 'Send', class: "btn btn-sm btn-primary", data: { confirm: 'Are you sure?' }

@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    meta charset="utf-8"
+    meta content="width=device-width, initial-scale=1.0, user-scalable = no" name="viewport"
+    meta content="yes" name="apple-mobile-web-app-capable"
+    meta content="Miskre" name="apple-mobile-web-app-title"
+    meta content="black" name="apple-mobile-web-app-status-bar-style"
+    link href="#{image_path('favicon.ico')}" rel=("shortcut icon") type="image/x-icon"
+    link href="#{image_path('favicon.ico')}" rel="icon" type="image/x-icon"
+    = stylesheet_link_tag 'account/application', media: 'all'
+    title miskre - empowering the decentralized world
+    meta content="#{ENV['default_url_option']}" property="og:url"
+    meta content="miskre - empowering the decentrailized world" property="og:title"
+    meta content="we might not have an all-star team with people from big corporate backgrounds, but we are the crazy ones with the right skill sets and passion to bring this project to fruition. we are fully prepared to dedicate our lives to this project." property="og:description"
+    meta content="article" property="og:type"
+    meta content="725786064476346" property="fb:app_id"
+    meta content="#{image_url('og.2.jpg')}" property="og:image"
+    meta content="#{image_url('og.2.jpg')}" property="og:image:secure_url"
+    meta content="image/jpeg" property="og:image:type"
+    meta content="600" property="og:image:width"
+    meta content="315" property="og:image:height"
+  body
+    #menu.h
+      ul.navigations
+        li
+          a href="#{ENV['miskre_main_page']}/#home" home
+        li
+          a href="#{ENV['miskre_main_page']}/whitepaper.html" whitepaper
+        li
+          a href="#{ENV['miskre_main_page']}/#roadmap" roadmap
+        li
+          a href="#{ENV['miskre_main_page']}/#team" team
+        li
+          a href="#{ENV['miskre_main_page']}/#faqs" faqs
+        li
+          a href="#{ENV['miskre_main_page']}/#blog" blog
+        li
+          a href="#{ENV['miskre_main_page']}/#reach" reach
+    #top-bar
+      a.menu data-aos="fade-right" data-aos-duration="1000" href="#" 
+        = image_tag "menu.svg"
+      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{account_root_path}" 
+        = image_tag "logo.v2.svg"
+      - if params[:controller] == "account/users" && params[:action] == "new"
+        = link_to "login", account_sign_in_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
+      - elsif params[:controller] == "account/sessions" && params[:action] == "new"
+        = link_to "enter whitelist", account_sign_up_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
+
+    #social-bar data-aos="fade-right" data-aos-duration="1000" 
+      a href="#" 
+        = image_tag "twitter.v2.svg"
+      a href="#" 
+        = image_tag "facebook.v2.svg"
+      a href="#" 
+        = image_tag "telegram.v2.svg"
+      a href="#" 
+        = image_tag "slack.v2.svg"
+    .remodal-bg
+      = yield
+    = javascript_include_tag 'account/application'

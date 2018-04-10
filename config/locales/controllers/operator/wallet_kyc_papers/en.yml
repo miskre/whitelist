@@ -1,0 +1,6 @@
+en:
+  operator/wallet_kyc_papers_controller:
+    create:
+      notice: 'Kyc paper was successfully created.'
+    edit:
+      notice: 'Kyc paper was successfully updated.'

@@ -1,0 +1,8 @@
+p
+  |Hello&nbsp;
+  = @wallet_user.email
+
+p  WELCOME TO MISKRE
+
+p
+  = link_to 'Activate your account', confirm_email_account_user_url(id: @wallet_user.confirm_token)

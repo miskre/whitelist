@@ -1,0 +1,35 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .row
+    .col-lg-8
+      .ibox.float-e-margins
+        .ibox-title
+          h5 User Information
+        .ibox-content
+          table.table.m-t
+            tbody
+                tr
+                  th Nickname:
+                  td = @operator_user.nickname
+                tr
+                  th Operator authority:
+                  td = @operator_user.authority
+          = link_to 'Edit', edit_operator_user_path(@operator_user), class: "btn btn-sm btn-primary"
+          = link_to 'Back', operator_users_path, class: "btn btn-sm btn-primary m-l-md"
+  .row
+    .col-lg-4
+      .ibox.float-e-margins
+        = form_for @operator_user do |f|
+          .ibox-title
+            h5 QRCode for Two Factor Authentication
+            .ibox-tools
+              = f.hidden_field :use_two_factor_auth, value: !@operator_user.use_two_factor_auth
+              = button_tag type: :submit, class: "btn btn-outline m-l-md" do
+                - if @operator_user.use_two_factor_auth
+                  i.fa.fa-toggle-on
+                  |  ON
+                - else
+                  i.fa.fa-toggle-off
+                  |  OFF
+
+          .ibox-content
+            = qrcode_tag @operator_user.otp_provisioning_uri, module_size: 5

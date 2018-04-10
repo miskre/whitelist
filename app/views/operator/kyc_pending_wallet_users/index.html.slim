@@ -1,0 +1,43 @@
+= paginate @kyc_pending_wallet_users
+h1 #{ t '.title' }
+table.table.table-borderd
+  thead
+    tr
+      th #{ t '.email' }
+      th #{ t '.full_name' }
+      th #{ t '.update_date' }
+      th #{ t '.request_date' }
+      th Status
+      th 
+
+  tbody
+    - @kyc_pending_wallet_users.each do |kyc_pending_wallet_user|
+      - if kyc_pending_wallet_user.kyc.status == "pending"
+        tr
+          td = kyc_pending_wallet_user.email
+          td = kyc_pending_wallet_user.kyc.try!(:full_name)
+          td = local_time kyc_pending_wallet_user.updated_at
+          td = local_time kyc_pending_wallet_user.created_at
+          td = kyc_pending_wallet_user.kyc&.status
+          td
+            = link_to_if(\
+              kyc_pending_wallet_user.kyc.present?,
+              "#{ t '.detail' }",
+              edit_operator_kyc_pending_wallet_user_path(kyc_pending_wallet_user),
+            )
+br
+hr
+br
+h1 #{ t '.kyc_not_submit_title' }
+
+table.table.table-borderd
+  thead
+    tr
+      th #{ t '.email' }
+      th = t '.mail_confirmed'
+  tbody
+    - @kyc_not_submit_wallet_users.each do |kyc_not_submit|
+      tr
+        td = kyc_not_submit.email
+        td = kyc_not_submit.email_confirmed ? t(".yes_flag") : nil
+       

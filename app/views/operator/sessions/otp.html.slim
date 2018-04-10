@@ -1,0 +1,7 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  .
+    .
+    = form_for :session, url: operator_two_factor_auth_path, action: :two_factor_auth, :html => {class: 'm-t'} do |f|
+        .form-group
+          = f.text_field :otp, class: 'form-control', placeholder: 'One Time Password', autofocus: true
+        = f.submit 'Sign in', class: 'btn btn-primary block full-width m-b'

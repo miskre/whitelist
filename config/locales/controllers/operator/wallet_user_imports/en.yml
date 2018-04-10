@@ -1,0 +1,19 @@
+en:
+  operator:
+    wallet_user_imports:
+      create:
+        too_big_file: File size is too large. (must be less than 50KB)
+        invalid_csv: The CSV file is invalid.
+      execute:
+        success: The import was successfully completed.
+        failed: The import was failed.
+        timeout: The import was timed out or double-clicked.
+      import_form:
+        title: Import CSV
+        upload: upload
+        available_attributes: Available import attributes
+        sample_download: Download sample CSV
+        attr_name: Attribute
+        col_name: Column
+        required: Required
+        date_format: Format of date

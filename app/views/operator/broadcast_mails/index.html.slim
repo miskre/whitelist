@@ -1,0 +1,26 @@
+.wrapper.wrapper-content.animdeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 #{ t '.title' }
+        = paginate @broadcast_mails
+        .ibox-content
+          .row
+            .col-lg-12
+              = link_to "+ New", new_operator_broadcast_mail_path, class: "btn btn-sm btn-primary"
+          .row
+            table.table
+              thead
+                tr
+                  th #{ t '.send_all_customers' }
+                  th #{ t '.subject' }
+                  th #{ t '.sent_datetime' }
+                  th
+              tbody
+                - @broadcast_mails.each do |broadcast_mail|
+                  tr
+                    td = (content_tag :i, '', class: 'fa fa-check') if broadcast_mail.send_all_customers
+                    td = broadcast_mail.subject
+                    td = broadcast_mail.created_at
+                    td = link_to 'Show', operator_broadcast_mail_path(broadcast_mail)

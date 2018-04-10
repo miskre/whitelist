@@ -1,0 +1,30 @@
+.wrapper.wrapper-content.animdeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 #{ t '.title' }
+        .ibox-content
+          .row
+            .col-lg-12
+              h4 #{ t '.subject'}
+              p = @broadcast_mail.subject
+          .row
+            .col-lg-12
+              h4 #{ t '.body' }
+              p = @broadcast_mail.body
+
+          .row
+            .col-lg-12
+              h4 #{ t '.destinations' }
+              - if @broadcast_mail.send_all_customers
+                p #{ t '.all_users' }
+              - else
+                - if @broadcast_mail.users.present?
+                  h5 #{ t '.users' }
+                  - @broadcast_mail.users.each do |user|
+                    p style='text-indent: 1em;' = user.email
+        .ibox-footer
+          .row
+            .col-lg-12
+              = link_to 'Back', operator_broadcast_mails_path, class:'btn btn-primary'

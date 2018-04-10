@@ -1,0 +1,6 @@
+en:
+  operator/wallet_users_controller:
+    create:
+      notice: 'Wallet user was successfully created.'
+    edit:
+      notice: 'Wallet user was successfully updated.'

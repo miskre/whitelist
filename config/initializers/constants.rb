@@ -1,0 +1,1 @@
+AMOUNT_RANGE = ["Smaller than 1 BTC", "1 to 3 BTC", "Bigger than 3 BTC"]

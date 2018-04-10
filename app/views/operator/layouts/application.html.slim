@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    title = Settings.operator_title + " | Operator"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = favicon_link_tag "favicon.ico"
+    = stylesheet_link_tag 'operator/application', media: 'all'
+    = csrf_meta_tags
+  body.fixed-sidebar.fixed-nav.fixed-nav-basic
+    #wrapper
+      = render 'operator/layouts/navigation'
+      #page-wrapper.gray-bg
+        = render 'operator/layouts/topnavbar'
+        = yield
+    = javascript_include_tag 'operator/application'
+
+  - flash.each do |type, msg|
+    javascript:
+      $(document).ready(function() {
+          setTimeout(function() {
+              toastr.options = {
+                  closeButton: true,
+                  progressBar: true,
+                  showMethod: 'slideDown',
+                  timeOut: 0
+              };
+              toastr.#{type}("#{msg}");
+
+          }, 1300);
+
+      });

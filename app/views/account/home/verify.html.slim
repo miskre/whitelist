@@ -1,0 +1,134 @@
+#slides
+  section#whitelist-user.full-height
+    .bg style=("background-image: url(#{image_url('metal.jpeg')})")
+    .fg
+      = render "header"
+      = form_for @kyc_paper, as: "kyc", url: account_update_verify_path, html: {id: "info", "data-aos": "fade-right", multipart: true} do |f|
+        - if @kyc_paper.errors.any?
+          .top-link
+            p Errors
+            - @kyc_paper.errors.full_messages.each do |message|
+              p
+                | ・
+                = message
+        .rw.sp-30
+          = hidden_field_tag :paper_type, @kyc_paper.type
+          .cl.md-6
+            label Identification Paper Type
+            .radio-group
+              .radio
+                input#passport checked="checked" name="kyc[type]" type="radio" value="Wallet::PassportKycPaper"
+                label for="passport"  Passport
+              .radio
+                input#national-id name="kyc[type]" type="radio" value="Wallet::NationalIdCardKycPaper"
+                label for="national-id"  National ID
+              .radio
+                input#driver-license name="kyc[type]" type="radio" value="Wallet::LicenseKycPaper"
+                label for="driver-license"  Driver License
+          .cl.md-6
+            label
+              | Identification Number
+              = f.text_field :passport_number, placeholder: "Enter your passport number here"
+              = f.text_field :national_id_card_number, placeholder: "Enter your national ID card number here"
+              = f.text_field :license_number, placeholder: "Enter your license number here"
+        .rw
+          .cl
+            ul.bg.md-2.lg-3#passport-session
+              li
+                label.mb-10 Passport
+                label.image-picker.back style="background-image: url(#{@kyc_paper.passport})"
+                  input type="file" name="kyc[passport]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_6_html' }
+                  p #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+              li
+                label.mb-10 Selfie with Identification
+                label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_passport})"
+                  input type="file" name="kyc[face_and_passport]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_11' }
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+            ul.bg.md-2.lg-3#national-id-session
+              li
+                label.mb-10 Front
+                label.image-picker.front style="background-image: url(#{@kyc_paper.national_id_card})"
+                  input type="file" name="kyc[national_id_card]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_12' }
+                    br
+                    | Please upload national ID card that remains more than four months.
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+              li
+                label.mb-10 Back
+                label.image-picker.back style="background-image: url(#{@kyc_paper.national_id_card_reverse})"
+                  input type="file" name="kyc[national_id_card_reverse]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | If you upload a national ID card, please also upload the back of side
+
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+              li
+                label.mb-10 Selfie with Identification
+                label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_national_id_card})"
+                  input type="file" name="kyc[face_and_national_id_card]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_11' }
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+            ul.bg.md-2.lg-3#license-session
+              li
+                label.mb-10 Front
+                label.image-picker.front style="background-image: url(#{@kyc_paper.license})"
+                  input type="file" name="kyc[license]"
+                .top-link  
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_12' }
+                    br
+                    | #{ t 'wallet.kyc_papers.item_13' }
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+              li
+                label.mb-10 Back
+                label.image-picker.back style="background-image: url(#{@kyc_paper.license_reverse})"
+                  input type="file" name="kyc[license_reverse]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_14' }
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+              li
+                label.mb-10 Selfie with Identification
+                label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_license})"
+                  input type="file" name="kyc[face_and_license]"
+                .top-link
+                  p
+                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    br
+                    br
+                    | #{ t 'wallet.kyc_papers.item_11' }
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+        .rw
+          .cl
+            button.dis type="submit"  save

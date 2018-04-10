@@ -1,0 +1,17 @@
+= form_for @operator_user do |f|
+  - if @operator_user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@operator_user.errors.count, "error")} prohibited this operator_user from being saved:"
+      ul
+        - @operator_user.errors.full_messages.each do |message|
+          li = message
+  .form-group
+    = f.label :nickname, class: "label-control"
+    = f.text_field :nickname, class: "form-control"
+  .form-group
+    = f.label :password, class: "label-control"
+    = f.text_field :password, class: "form-control"
+  .form-group
+    = f.label :authority, class: "label-control"
+    = select_tag "operator_user[authority]", options_for_select([Operator::Authority.labels, Operator::Authority.values].transpose, selected: @operator_user.try(:authority).try(:value)), class: "form-control"
+  .actions = f.submit class: "btn btn-primary"

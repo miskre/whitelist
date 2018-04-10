@@ -1,0 +1,47 @@
+#slides
+  section#whitelist-user.full-height
+    .bg style=("background-image: url(#{image_url('metal.jpeg')})") 
+    .fg
+      = render "header"
+      = form_for @kyc_paper, as: :kyc, url: account_basic_info_path, html: {id: "info", "data-aos" => "fade-right"} do |f| 
+        - if @kyc_paper.errors.any?
+          .top-link
+            p Errors
+            - @kyc_paper.errors.full_messages.each do |message|
+              p
+                | ・
+                = message
+        .rw.sp-30
+          .cl.md-6
+            label
+              | Country
+              = select_tag "kyc[country]", options_for_select(ISO3166::Country.translations.collect{|c| [c[1], c[0]]}, selected: @kyc_paper&.country), prompt: "Select your country of residence"
+            label
+              | Full name
+              = f.text_field :full_name
+            label
+              | Date of birth
+              = f.date_field :birth_date
+            label
+              | Address
+              = f.text_field :street
+              = f.text_field :street2
+            .rw.sp-15
+              .cl.sm-6
+                label
+                  | State/Region
+                  = f.text_field :region
+              .cl.sm-6
+                label
+                  | City
+                  = f.text_field :city
+          .cl.md-6
+            label
+              | Amount want to buy
+              = select_tag "kyc[amount_range]", options_for_select([AMOUNT_RANGE, [0,1,2]].transpose, selected: @kyc_paper&.amount_range), promt: "Choose amount you want to buy in crowdsale"
+            label
+              | BTC Wallet Address
+              = f.text_field :btc_address
+        .rw
+          .cl
+            button.dis type="submit" = @kyc_paper.id.present? ? "save" : "next"

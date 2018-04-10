@@ -1,0 +1,45 @@
+nav.navbar-default.navbar-static-side role="navigation"
+  div.sidebar-collapse
+    ul.nav.metismenu#side-menu
+      li.nav-header
+        = image_tag "logo.v2.svg"
+        hr
+
+        |Welcome:&nbsp;
+        = current_operator_user.nickname
+      li class=("active" if current_page?(controller: 'home'))
+        = link_to operator_root_path do
+          i.fa.fa-desktop
+          span.nav-label Home
+
+      - if current_operator_user.authority == Operator::Authority::SHO
+       
+        li class=("active" if current_page?(controller: 'kyc_pending_wallet_users'))
+          = link_to operator_kyc_pending_wallet_users_path do
+            i.fa.fa-newspaper-o
+            span.nav-label KYCs Pending
+            span.label.label-warning.pull-right = Kyc.where(status: "pending").count
+        li class=("active" if current_page?(controller: 'wallet_users'))
+          = link_to operator_wallet_users_path do
+            i.fa.fa-user
+            span.nav-label Users
+        li class=("active" if current_page?(controller: 'users'))
+          = link_to operator_users_path do
+            i.fa.fa-home
+            span.nav-label Operators
+        li class=("active" if current_page?(controller: 'mail_contents'))
+          = link_to operator_mail_contents_path do
+            i.fa.fa-list-alt
+            span.nav-label Mail Template
+        li class=("active" if current_page?(controller: 'broadcast_mails'))
+          = link_to operator_broadcast_mails_path do
+            i.fa.fa-envelope-o
+            span.nav-label Broadcast Mail
+        li class=("active" if current_page?(controller: 'reasons'))
+          = link_to operator_reasons_path do
+            i.fa.fa-comment
+            span.nav-label Reason list
+        li class=("active" if (params[:controller] == 'operator/maintenance_settings'))
+          = link_to operator_maintenance_setting_path do
+            i.fa.fa-wrench
+            span.nav-label Maintenance

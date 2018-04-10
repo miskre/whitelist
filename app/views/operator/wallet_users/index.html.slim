@@ -1,0 +1,28 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Wallet Users
+        .ibox-content
+          .row
+            .col-lg-12
+              = link_to "+ New", new_operator_wallet_user_path, class: "btn btn-sm btn-primary"
+          .row
+            table.table#operator-wallet-user
+              thead
+                tr
+                  th 
+                    = t '.first_name' 
+                  th #{ t '.email' }
+                  th #{ t '.mail_confirmed' }
+                  th 
+                  th
+              tbody
+                - @users.includes(:kyc).each do |wallet_user|
+                  tr
+                    td = wallet_user.kyc.try!(:full_name)
+                    td = wallet_user.email
+                    td = wallet_user.email_confirmed
+                    td = link_to "#{ t '.detail' }", operator_wallet_user_path(wallet_user)
+                    td = wallet_user.removed? ? "Removed" : ""

@@ -1,0 +1,43 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .row.white-bg
+    .col-lg-9
+      h2.reciept-font.m-t
+        i.fa.fa-user.m-r
+        = @wallet_user.email
+  .row.m-t
+    .col-lg-6
+      .ibox.float-e-margins
+        .ibox-title
+          h5 KYC paper
+        .ibox-content
+          - if @wallet_user.kyc.nil?
+            .m-b
+              = link_to 'Create KYC Paper', new_operator_wallet_user_wallet_kyc_paper_path(@wallet_user.id), class: "btn btn-sm btn-primary #{p 'disabled' if @wallet_user.removed? }"
+          - else
+            .m-b
+              = link_to 'Edit KYC Paper', edit_operator_wallet_user_wallet_kyc_paper_path(@wallet_user.id, @wallet_user.kyc), class: "btn btn-sm btn-primary #{p 'disabled' if @wallet_user.removed? }"
+          - if @wallet_user.kyc.present?
+            = render partial: 'operator/kyc_pending_wallet_users/info_table', locals: { user: @wallet_user }
+    .col-lg-6
+      .ibox.float-e-margins
+        .ibox-title
+          h5 User Information
+        .ibox-content
+          = link_to 'Edit User', edit_operator_wallet_user_path(@wallet_user), class: "btn btn-sm btn-primary #{p 'disabled' if @wallet_user.removed? }"
+          - unless @wallet_user.removed?
+            = link_to "Remove", operator_wallet_user_path(@wallet_user), method: :delete, class: "btn btn-sm btn-primary m-l-md",  data: {confirm: "#{ t '.delete_confirm' }"}
+          table.table.m-t
+            tbody
+                tr
+                  th Email:
+                  td = @wallet_user.email
+                tr
+                  th Email confirmed:
+                  td = @wallet_user.email_confirmed
+                tr
+                  th Last signed in at:
+                  td = @wallet_user.last_signed_in_at
+                tr
+                  th Registration Date:
+                  td = local_time @wallet_user.created_at
+               

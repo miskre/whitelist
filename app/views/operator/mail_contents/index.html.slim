@@ -1,0 +1,15 @@
+h1 Mail Template
+table.table.table-borderd
+  thead
+    tr
+      th Kind
+      th Subject
+      th Update Date
+      th
+  tbody
+    - @contents.each do |content|
+      tr
+        td = content.kind
+        td = content.subject
+        td = local_time content.updated_at
+        td = link_to "Edit", edit_operator_mail_content_path(content.id)

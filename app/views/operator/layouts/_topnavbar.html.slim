@@ -1,0 +1,22 @@
+div.row.border-bottom
+  nav.navbar.navbar-fixed-top.white-bg role="navigation" style="margin-bottom: 0"
+    div.navbar-header
+      a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href="#"
+        i.fa.fa-bars
+    ul.nav.navbar-top-links.navbar-right
+      li.dropdown.res-lang-dis
+        a.dropdown-toggle.count-info data-toggle="dropdown" href="#"
+          - if locale == :en
+            img.img-circle src="/images/wallet/lan_usa.png" style="width:30px;"
+          | &nbsp;Language
+        ul.dropdown-menu.dropdown-messages.language-wdh
+          li
+            .dropdown-messages-box
+              .media-body
+                img src="/images/wallet/lan_usa.png" style="width:30px;"
+                span = link_to 'English', url_for(params.merge(locale: 'en')), class: 'lang-color'
+          / li.divider style="background-color:#fff;"
+      li
+        = link_to operator_sign_out_path, :method => :delete do
+          i.fa.fa-sign-out
+          b Sign out

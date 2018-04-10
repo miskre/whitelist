@@ -1,0 +1,17 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Maintenance Setting
+        .ibox-content
+          = form_for @setting, url: operator_maintenance_setting_path do |f|
+            table.table.table-borderd
+              thead
+                tr
+                  td = f.label :enabled
+                  td = f.check_box :enabled, class: 'form-control'
+                tr
+                  td = f.label :message
+                  td = f.text_area :message, class: 'form-control'
+            = f.submit class: 'btn btn-primary'

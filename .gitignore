@@ -1,0 +1,22 @@
+/log/*
+!/log/.keep
+/tmp
+
+/vendor/bundle
+/.vagrant
+.DS_Store
+.byebug_history
+/public/system
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+
+.bundle/
+
+public/assets/*
+
+# app/assets/javascripts/i18n/*
+
+.idea/
+/config/application.yml

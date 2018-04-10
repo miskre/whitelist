@@ -1,0 +1,5 @@
+- if @kyc_pending_wallet_user.kyc.present?
+  == render 'form'
+- else
+  p #{ t '.no_information' }
+  = link_to 'Back', operator_kyc_pending_wallet_users_path

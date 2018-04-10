@@ -1,0 +1,11 @@
+en:
+  operator:
+    wallet_user_imports:
+      create:
+        title: CSV Import
+        confirm: Confirmation
+        cancel: Cancel
+        execute: Execute
+        error: Error
+        csv_data: CSV data
+        line_number: Line

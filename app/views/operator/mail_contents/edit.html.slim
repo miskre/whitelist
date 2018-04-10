@@ -1,0 +1,22 @@
+h1.m-t-xl Edit
+= form_for @content do |f|
+  table.table.table-borderd
+    thead
+      tr
+        td = f.label :subject
+        td = f.text_field :subject
+        td
+      tr
+        td = f.label :body
+        td = f.text_area :body, cols: 100, rows: 20
+        td
+          . 
+            |* available word *
+            br
+            - Operator::MailContent.job_params(kind: @content.kind.to_sym, obj: nil)[:rep].each do |key, item|
+              = "<# #{key.to_s} #>"
+              br
+      tr
+        td
+        td = f.submit "Update", class: "btn btn-sm btn-primary m-l-md"
+        td

@@ -1,0 +1,39 @@
+#slides
+  section#whitelist-login.full-height
+    .bg style=("background-image: url(https://mis-kre.herokuapp.com/assets/img/slides/window.jpeg)") 
+    .fg
+      .title data-aos="fade-left" 
+        h1 login
+      - if system_available?
+        .top-link data-aos="fade-down" 
+          | or still not in the list?
+          = link_to "register now →", account_sign_up_path, class: "ml-10"
+        = form_for :session, url: account_sign_in_path, :html => {class: 'login'} do |f|
+          .top-link
+            = flash[:error]
+          .rw data-aos="fade-right" 
+            .cl.md-6
+              label
+                | email
+                = f.text_field :email, placeholder: 'Email', autofocus: true
+              label
+                | password
+                = f.password_field :password, placeholder: 'Password'
+              .sw.a.rd
+                input#accept-tos type="checkbox" name="session[remember_me]"
+                label.ib for="accept-tos" 
+                span.caption remember me
+            .cl.md-6
+          .rw data-aos="fade-up" 
+            .cl
+            = f.button "login", class: "dis"
+          .rw data-aos="fade-down"
+            .cl
+              br
+              = link_to account_password_forget_path do
+                small Forgot password?
+      - else
+        .top-link data-aos="fade-down" 
+          | The system is currently in maintenance.
+          p 
+            i = simple_format maintenance.message

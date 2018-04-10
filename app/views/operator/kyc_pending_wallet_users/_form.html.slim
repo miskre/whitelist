@@ -1,0 +1,38 @@
+= form_for @kyc_paper, url: operator_kyc_pending_wallet_user_path do |f|
+  - if @kyc_pending_wallet_user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@kyc_pending_wallet_user.errors.count, "error")} prohibited this operator_kyc_pending_wallet_user from being saved:"
+      ul
+        - @kyc_pending_wallet_user.errors.full_messages.each do |message|
+          li = message
+  .wrapper.wrapper-content.animated.fadeInRight
+    .row
+      .col-lg-6
+        .ibox.float-e-margins
+          .ibox-title
+            h5 User KYC Information
+          .ibox-content
+            .row
+                = link_to("<< Previous KYC", edit_operator_kyc_pending_wallet_user_path(@prev_kyc), class: "btn btn-success pull-left") if @prev_kyc.present? && @prev_kyc&.kyc&.status == "pending"
+                = link_to("Next KYC >>", edit_operator_kyc_pending_wallet_user_path(@next_kyc), class: "btn btn-success pull-right") if @next_kyc.present? && @next_kyc&.kyc&.status == "pending"
+            br
+            .row
+              = render partial: 'info_table', locals: { user: @kyc_pending_wallet_user }
+              div.text-center
+                = link_to 'Back', operator_kyc_pending_wallet_users_path, class: "btn btn-sm btn-primary"
+                = f.submit t('activerecord.attributes.wallet/kyc_paper.accept_button'), name: :accept, class: "btn btn-sm btn-primary m-l-md"
+                = link_to t('activerecord.attributes.wallet/kyc_paper.reject_button'), "javascript:void(0)", class: "rejection-button btn btn-sm btn-primary m-l-md"
+                
+      #rejection-block.col-lg-6
+        .ibox.float-e-margins
+          .ibox-title
+            h5 Reasons
+          .ibox-content
+            .row
+              - @reasons.each do |reason|
+                .col-sm-6
+                  .form-group
+                    = check_box_tag "reason[]", reason.content
+                    |&nbsp;
+                    = label_tag reason.content
+              = f.submit "Submit", name: :reject, class: "btn btn-sm btn-primary m-l-md"

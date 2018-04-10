@@ -1,0 +1,18 @@
+h1 Reason list for rejection
+table.table.table-borderd
+  thead
+    tr
+      th Content
+      th Created at
+      th 
+      th
+  tbody
+    - @reasons.each do |reason|
+      tr
+        td = reason.content
+        td = reason.created_at.to_time
+        td = link_to "Edit", edit_operator_reason_path(reason)
+        td = link_to "Destroy", operator_reason_path(reason), method: :DELETE
+#small-chat
+  = link_to new_operator_reason_path, class: 'open-small-chat'
+    i.fa.fa-plus

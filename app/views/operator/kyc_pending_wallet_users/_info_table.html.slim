@@ -1,0 +1,79 @@
+table.table.kyc_information_review
+  tbody
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.country'
+      td = user.kyc.country
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.full_name'
+      td = user.kyc.full_name
+   
+    tr
+      th = t 'activerecord.attributes.wallet/user.email'
+      td = user.email
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.regist_date'
+      td = local_time user.kyc.created_at
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.update_date'
+      td = local_time user.kyc.updated_at
+   
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.birth_date'
+      td = user.kyc.birth_date
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.street'
+      td = user.kyc.street
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.city'
+      td = user.kyc.city
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.region'
+      td = user.kyc.region
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.amount_range'
+      td = AMOUNT_RANGE[user.kyc.amount_range]
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.btc_address'
+      td = user.kyc.btc_address
+    
+    tr
+      th = t 'activerecord.attributes.wallet/kyc_paper.type'
+      td = user.kyc.class.model_name.human
+    - if user.kyc.is_a? Wallet::PassportKycPaper
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.passport_number'
+        td = user.kyc.passport_number
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.face_and_passport'
+        td = image_tag user.kyc.face_and_passport.url, width: 200
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.passport'
+        td = image_tag user.kyc.passport.url, width: 200
+     
+    - elsif user.kyc.is_a? Wallet::LicenseKycPaper
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.license_number'
+        td = user.kyc.license_number
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.face_and_license'
+        td = image_tag user.kyc.face_and_license.url, width: 200
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.license'
+        td = image_tag user.kyc.license.url, width: 200
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.license_reverse'
+        td = image_tag user.kyc.license_reverse.url, width: 200
+    - elsif user.kyc.is_a? Wallet::NationalIdCardKycPaper
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.national_id_card_number'
+        td = user.kyc.national_id_card_number
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.face_and_national_id_card'
+        td = image_tag user.kyc.face_and_national_id_card.url, width: 200
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.national_id_card'
+        td = image_tag user.kyc.national_id_card.url, width: 200
+      tr
+        th = t 'activerecord.attributes.wallet/kyc_paper.national_id_card_reverse'
+        td = image_tag user.kyc.national_id_card_reverse.url, width: 200
+

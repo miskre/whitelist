@@ -1,0 +1,9 @@
+Hi <# UserEmail #>,
+
+Thank you for using MISKRE this time.
+Since you have logged in with your account, we will send you a one-time password for 2-step verification.
+The valid time of this password is <# AvailableSeconds #>
+
+One Time Password: <# OneTimePassword #>
+Issued on: <# TimeNow #>
+Expiration date: <# ClosingTime #>

@@ -1,0 +1,36 @@
+#slides
+  section#whitelist-user.full-height
+    .bg style=("background-image: url(#{image_url('metal.jpeg')})") 
+    .fg
+      = render "header"
+      .status data-aos="fade-up"
+        - if @kyc_paper.status == "pending"
+          p
+            | Waiting for
+            = image_tag "logo.inline.svg", class: "mh-10", height: "12"
+            | staffs approve your whitelist information.
+          p
+            | You will receive updates email about the progess soon.
+            br
+          p You still can update your information, after approved, any changes will be re-checked by our staffs again.
+        - elsif @kyc_paper.status == "accepted"
+          p
+            |Thank you for using 
+            = image_tag "logo.inline.svg", class: "mh-10", height: "12"
+            |this time.
+            br
+            |I'm reporting that my application for KYC Paper has been accepted.
+        - elsif @kyc_paper.status == "rejected"
+          p
+            |Thank you for using 
+            = image_tag "logo.inline.svg", class: "mh-10", height: "12"
+            |this time.
+            br
+            |KYC Paper which you uploaded was incomplete.
+          p
+            |Reasons:
+            br
+            - eval(@kyc_paper.message).each do |mess| 
+              |-&nbsp;
+              = mess
+              br

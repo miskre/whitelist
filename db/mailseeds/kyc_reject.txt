@@ -1,0 +1,7 @@
+Hi <# UserEmail #>,
+
+Thank you for using MISKRE this time.
+KYC Paper which I uploaded was incomplete.
+
+Reasons: 
+<# KycMessage #>

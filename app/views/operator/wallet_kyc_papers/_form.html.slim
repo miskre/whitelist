@@ -1,0 +1,122 @@
+= form_for @wallet_kyc_paper, as: :wallet_kyc_paper, url: path do |f|
+  - if @wallet_kyc_paper.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@wallet_kyc_paper.errors.count, "error")} prohibited this operator_wallet_kyc_paper from being saved:"
+      ul
+        - @wallet_kyc_paper.errors.full_messages.each do |message|
+          li = message
+  .row
+    .col-sm-9
+        .form-group
+          = f.label :country
+          - if !@wallet_kyc_paper.country
+            = f.country_select :country, { locale: 'en', selected: "" }, { class: 'form-control m-b' }
+          - else
+            = f.country_select :country, { locale: 'en' }, { class: 'form-control m-b' }
+        .form-group
+          = f.label      :full_name
+          = f.text_field :full_name, placeholder: 'Enter first name', class: 'form-control'
+        #data_1.form-group
+          = f.label :birth_date
+          .input-group.date
+            span.input-group-addon
+              i.fa.fa-calendar
+            = f.text_field :birth_date, class: 'form-control'
+        .form-group
+          = f.label      :street
+          = f.text_field :street, placeholder: 'Address', class: 'form-control'
+        .form-group
+          = f.label      :street2
+          = f.text_field :street2, placeholder: 'Apt, suite, etc. (optional)', class: 'form-control'
+        .form-group
+          = f.label      :region
+          = f.text_field :region, placeholder: 'State', class: 'form-control'
+        .form-group
+          = f.label      :city
+          = f.text_field :city, placeholder: 'City', class: 'form-control'
+        .form-group
+          = f.label      :amount_range
+          = select_tag "wallet_kyc_paper[amount_range]", options_for_select([AMOUNT_RANGE, [0,1,2]].transpose, selected: @wallet_kyc_paper.amount_range), promt: "Choose amount you want to buy in crowdsale", class: "form-control"
+        .form-group
+          = f.label      :btc_address
+          = f.text_field :btc_address, placeholder: 'BTC Address', class: 'form-control'
+        br
+  .row
+    .col-sm-12
+        .form-group.mypage-margin-t
+          h3 #{ t 'wallet.kyc_papers.submission_certificate' }
+
+        i.text-danger Please fill at least 1 of 3 tabs below.
+
+        .tabs-container.mypage-margin-t
+          ul.nav.nav-tabs
+            li#tag-1-nav class=('active' if @wallet_kyc_paper.type == 'Wallet::PassportKycPaper')
+              a data-toggle="tab" href="#tab-1"
+                | Passport
+            li#tag-2-nav class=('active' if @wallet_kyc_paper.type == 'Wallet::NationalIdCardKycPaper')
+              a data-toggle="tab" href="#tab-2"
+                | National ID Card
+            li#tag-3-nav class=('active' if @wallet_kyc_paper.type == 'Wallet::LicenseKycPaper')
+              a data-toggle="tab" href="#tab-3"
+                | Driver License
+
+          = f.hidden_field :type
+          .tab-content
+            #tab-1.tab-pane class=('active' if @wallet_kyc_paper.type == 'Wallet::PassportKycPaper')
+              .panel-body
+                .form-group
+                  = f.label      :passport_number
+                  = f.text_field :passport_number, placeholder: 'Enter passport number', class: 'form-control'
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.face_and_passport' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :face_and_passport, class: 'margin-t clear-fl-left'
+                hr
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.passport' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :passport, class: 'margin-t clear-fl-left'
+
+            #tab-2.tab-pane class=('active' if @wallet_kyc_paper.type == 'Wallet::NationalIdCardKycPaper')
+              .panel-body
+                .form-group
+                  = f.label      :national_id_card_number
+                  = f.text_field :national_id_card_number, placeholder: 'Enter national ID number', class: 'form-control'
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.yourself_and_national_id_card' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :face_and_national_id_card, class: 'margin-t clear-fl-left'
+                hr
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.national_id_card' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :national_id_card, class: 'margin-t clear-fl-left'
+                hr
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.national_id_card_reverse' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :national_id_card_reverse, class: 'margin-t clear-fl-left'
+                
+            #tab-3.tab-pane class=('active' if @wallet_kyc_paper.type == 'Wallet::LicenseKycPaper')
+              .panel-body
+                .form-group
+                  = f.label      :license_number
+                  = f.text_field :license_number, placeholder: 'Enter license number', class: 'form-control'
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.face_and_license' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :face_and_license, class: 'margin-t clear-fl-left'
+                hr
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.license' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :license, class: 'margin-t clear-fl-left'
+                hr
+                .form-group.mypage-margin-t
+                  h3 【#{ t 'activerecord.attributes.wallet/kyc_paper.license_reverse' }】
+                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  = f.file_field :license_reverse, class: 'margin-t clear-fl-left'
+
+  .actions
+    = f.submit "#{ t 'wallet.kyc_papers.update' }", class: 'btn btn-sm btn-primary space-15'
+

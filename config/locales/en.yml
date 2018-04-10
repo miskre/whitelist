@@ -1,0 +1,294 @@
+---
+en:
+  wallet:
+    exchange:
+      xid:
+        ccex_notice_html: ※Please be aware of the rates showing below are as a guide. <br>※It'll be handling beyond 0.0005 BTC.
+    torihiki_type:
+      openaccount: opening account
+      deposit: deposit
+      transfer: transfer
+      remittance: remittance
+      exchange: exchange
+      cardcharge: cardcharge
+      withdraw: withdrawal
+      oversearemittancefee: overseas remittance commission fee
+      internaltransferfee: transfer commission fee
+      incomingfundsfiatfee: incoming funds fiat fee
+      incomingfundscryptfee: infoming funds crypt fee
+      incomingfundscreditcardfee: incoming funs credit card fee
+      exchangemarkupfee: exchange mark up fee
+      exchangefiatfee: exchange fiat fee
+      exchangecryptfee: exchange crypt fee
+      cardchargefee: cardcharge fee
+      chargebackfee: charge back fee
+      incomingfundsfiatfeejpy: incoming funds fiat fee(cv jpy)
+      incomingfundsfiatfeeusd: incoming funds fiat fee(cv usd)
+      oversearemittancefeejpy: overseas remittance commission fee(cv jpy)
+      oversearemittancefeeusd: overseas remittance commission fee(cv usd)
+      cardchargefeejpy: cardcharge fee(cv jpy)
+      cardchargefeeusd: cardcharge fee(cv usd)
+      exchangemarkupfiatfee: exchange mark up fee(Fiat)
+      exchangemarkupcryptfee: exchange mark up fee(Crypt)
+      exchangemarkupfeebitstamp: bitstamp fee
+      outwardfundscryptfee: outward funds fee(Crypt)
+      createcard: create card
+    remittance_status:
+      false: requesting
+      true: remittance’s been made
+    card_charge_status:
+      false: requesting
+      true: charged
+  operator:
+    authority:
+      sho:  sho
+      tiku: tiku
+      home_and_history_only: home and history only
+      bai:  bai
+  attributes:
+    account_address: account number
+  activerecord:
+    errors:
+      messages:
+        now_not_working:          Not working right now
+        not_usd:                  Please select your USD account
+        trading_agreed_check_box: Please accept terms and condition, if you wish to open a trading account
+        invalid_user:             invalid_user
+        wrong_password:           wrong password
+        short_balance:            short balance
+        same_account:             same account
+        account_is_not_exist:     account is not exist
+        account_is_not_others:    please select other account of other user
+        same_currency:            same currency
+        not_same_currency:        not same currency
+        over_amount:              over amount
+        record_invalid:           "record_invalid: %{errors}"
+        invalid_card_number:      is invalid card number
+        non_crypt_address:        There is currently no available address. Please try again later.
+        restrict_dependent_destroy:
+          has_one: "Can not delete because %{record} is exist"
+          has_many: "Can not delete because %{record} is exist"
+        invalid_card_number: is invalid card number
+    money:
+      equivalent: "equivalent value of %{count}"
+  date:
+    abbr_day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y/%m/%d(%a)"
+      short: "%m/%d"
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: "about %{count} hour"
+      about_x_months:
+        one: about one month
+        other: "about %{count} month"
+      about_x_years:
+        one: about one year
+        other: "about %{count} year"
+      almost_x_years:
+        one: within one year
+        other: "within %{count} year"
+      half_a_minute: thirty seconds
+      less_than_x_minutes:
+        one: within one minutes
+        other: "within %{count} minutes"
+      less_than_x_seconds:
+        one: within one second
+        other: "within %{count} second"
+      over_x_years:
+        one: more than one year
+        other: "more than %{count} year"
+      x_days:
+        one: one day
+        other: "%{count} day"
+      x_minutes:
+        one: one minute
+        other: "%{count} minute"
+      x_months:
+        one: one months
+        other: "%{count} months"
+      x_seconds:
+        one: one
+        other: "%{count} seconds"
+    prompts:
+      day: day
+      hour: hour
+      minute: minute
+      month: month
+      second: second
+      year: year
+  errors:
+    agent_dont_have_account: "%{nick} does not have %{currency_code}"
+    format: "%{attribute} %{message}"
+    messages:
+      different: different
+      accepted: accepted
+      blank: please enter
+      present: do not enter
+      confirmation: "do not match %{attribute}"
+      empty: please enter
+      equal_to: "equal to %{count}"
+      even: even
+      exclusion: exclusion
+      greater_than: "please make it bigger than %{count}"
+      greater_than_or_equal_to: "Please make it bigger than %{count}"
+      inclusion: not on the list
+      invalid: is invalid
+      less_than: "Please make it smaller than %{count}"
+      less_than_or_equal_to: "Please make it smaller than %{count}"
+      model_invalid: "fail to the validation: %{errors}"
+      not_a_number: Please digit  as
+      not_an_integer: Please enter integer
+      odd: Please enter odd
+      required: please enter
+      taken: already exist
+      untaken: not exist
+      too_long: "please enter within %{count}"
+      too_short: "please enter within %{count}"
+      wrong_length: "Please enter %{count}"
+      other_than: "Please enter %{count}"
+    template:
+      body: Please confirm the details
+      header:
+        one: "Error occurs %{model}"
+        other: "Error occurs %{model} %{count}"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "&hellip;"
+  helpers:
+    messages:
+      not_accepted: Please verify your identification
+      fiat_not_accepted: Please verify your identification when you change the legal currency
+      sign_up_mail_sended: Email has been sent to your registered email address. Please check your email box.
+      rusure: Are you sure to process ?
+      failed: Error
+      executed: Successfully processed
+      executed_remittance: Successfully requested. Please refer to the history status about withdrawals. Please expect to have your funds into your account within 5 to 7 working days.
+      changed_pw: changed password
+      changed_email: changed email address
+    select:
+      prompt: please select
+    submit:
+      create: register
+      submit: save
+      update: update
+      execute: process
+      pw_n_execute: enter password and process
+    page_entries_info:
+      one_page:
+        zero: <b>No date found. </b>
+        display_entries:
+      more_pages:
+        display_entries: "total %{total} / %{first}-%{last}"
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: Yen
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: billion
+          million: million
+          quadrillion: quadrillion
+          thousand: thousand
+          trillion: trillion
+          unit:
+      format:
+        delimiter:
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: byte
+          gb: gb
+          kb: kb
+          mb: mb
+          tb: tb
+    percentage:
+      format:
+        delimiter:
+        format: "%n%"
+    precision:
+      format:
+        delimiter:
+  support:
+    array:
+      last_word_connector: "&"
+      two_words_connector: "&"
+      words_connector: "&"
+  time:
+    am: am
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      long: "%Y/%m/%d(%a) %H:%M:%S %z"
+      short: "%y/%m/%d %H:%M"
+    pm: pm
