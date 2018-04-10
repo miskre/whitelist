@@ -80,10 +80,6 @@ Rails.application.configure do
 
   config.react.variant = :production
 
-  config.react.server_renderer_options = {
-    files: ["server_rendering.js"],
-  }
-
   config.paperclip_defaults = {
     storage: :s3,
     path: "production/kyc/:attachment/:id_partition/:style/:basename.:extension",
