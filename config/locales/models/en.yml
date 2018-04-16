@@ -129,7 +129,7 @@ en:
         license_reverse:                  Drivers License/Back
         utility_bill:                     Utility Bill
         preliminary:                      Utility bill / preliminary
-        file_size:                        ※File Size / 「.jpg/.png」Max / 5MB
+        file_size:                        ※File Size / 「.jpg/.jpeg/.png/.gif」Max / 5MB
       wallet/transfer_contact:
         account_address:       Account Number
         comment:               registered name of transfer

@@ -11,3 +11,6 @@ Rails.application.config.assets.version = '1.0'
 #Rails.application.config.assets.precompile += %w( *.js )
 # Rails.application.config.assets.precompile << 'i18n/*'
 # Rails.application.config.assets.precompile << 'server_rendering.js'
+
+Rails.application.config.assets.precompile << /\.(?:otf|svg)\z/
+

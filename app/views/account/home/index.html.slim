@@ -1,9 +1,9 @@
 #slides
   section#whitelist-user.full-height
-    .bg style=("background-image: url(#{image_url('metal.jpeg')})") 
+    .bg style="background-image: url(#{image_url('metal.jpeg')})"
     .fg
       = render "header"
-      = form_for @kyc_paper, as: :kyc, url: account_basic_info_path, html: {id: "info", "data-aos" => "fade-right"} do |f| 
+      = form_for @kyc_paper, as: :kyc, url: account_basic_info_path, html: {id: "basic-info", "data-aos" => "fade-right"} do |f| 
         - if @kyc_paper.errors.any?
           .top-link
             p Errors

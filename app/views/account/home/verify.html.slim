@@ -3,7 +3,7 @@
     .bg style=("background-image: url(#{image_url('metal.jpeg')})")
     .fg
       = render "header"
-      = form_for @kyc_paper, as: "kyc", url: account_update_verify_path, html: {id: "info", "data-aos": "fade-right", multipart: true} do |f|
+      = form_for @kyc_paper, as: "kyc", url: account_update_verify_path, html: {id: "verify", "data-aos": "fade-right", multipart: true} do |f|
         - if @kyc_paper.errors.any?
           .top-link
             p Errors
@@ -28,9 +28,15 @@
           .cl.md-6
             label
               | Identification Number
-              = f.text_field :passport_number, placeholder: "Enter your passport number here"
-              = f.text_field :national_id_card_number, placeholder: "Enter your national ID card number here"
-              = f.text_field :license_number, placeholder: "Enter your license number here"
+              #kyc_passport_number_block
+                = f.text_field :passport_number, placeholder: "Enter your passport number here", class: "kyc_passport_number"
+                .kyc_passport_number_error
+              #kyc_national_id_card_number_block
+                = f.text_field :national_id_card_number, placeholder: "Enter your national ID card number here", class: "kyc_national_id_card_number"
+                .kyc_national_id_card_number_error
+              #kyc_license_number_block
+                = f.text_field :license_number, placeholder: "Enter your license number here", class: "kyc_license_number"
+                .kyc_license_number_error
         .rw
           .cl
             ul.bg.md-2.lg-3#passport-session

@@ -184,12 +184,12 @@ en:
       greater_than_or_equal_to: "Please make it bigger than %{count}"
       inclusion: not on the list
       invalid: is invalid
-      less_than: "Please make it smaller than %{count}"
-      less_than_or_equal_to: "Please make it smaller than %{count}"
+      less_than: "please make it smaller than %{count}"
+      less_than_or_equal_to: "please make it smaller than %{count}"
       model_invalid: "fail to the validation: %{errors}"
-      not_a_number: Please digit  as
-      not_an_integer: Please enter integer
-      odd: Please enter odd
+      not_a_number: please digit  as
+      not_an_integer: please enter integer
+      odd: please enter odd
       required: please enter
       taken: already exist
       untaken: not exist
@@ -268,11 +268,11 @@ en:
       storage_units:
         format: "%n%u"
         units:
-          byte: byte
-          gb: gb
-          kb: kb
-          mb: mb
-          tb: tb
+          byte: Byte
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
     percentage:
       format:
         delimiter:

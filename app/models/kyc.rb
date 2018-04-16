@@ -5,7 +5,7 @@ class Kyc < ActiveRecord::Base
 	enum status: { pending: 0, accepted: 1, rejected: 2}
   default_value_for :type, 'Wallet::PassportKycPaper'
 
-  VALID_ROMAN_REGEX = /\A|[a-zA-Z0-9# ,.-]+\z/
+  VALID_ROMAN_REGEX = /\A[a-zA-Z0-9# ,.-]+\z/
   ALPHABETS_NUMBERS_ONLY = /\A[a-zA-Z0-9 ]+\z/
   ALPHABETS_ONLY = /\A[a-zA-Z ]+\z/
   BTC_ADDRESS = /\A^[1-3][a-km-zA-HJ-NP-Z1-9]{25,34}$\z/
@@ -16,8 +16,8 @@ class Kyc < ActiveRecord::Base
   validates :full_name,        presence: true, format: { with: ALPHABETS_ONLY }, length: { maximum: 50 }, if: :is_save_base_info?
   validates :birth_date,       presence: true, if: :is_save_base_info?
   validates :street,           presence: true, format: { with: VALID_ROMAN_REGEX }, length: { maximum: 50 }, if: :is_save_base_info?
-  validates :street2,          format: { with: VALID_ROMAN_REGEX}, length: { maximum: 50 }, if: :is_save_base_info?
-  validates :city,             presence: true, format: { with: VALID_ROMAN_REGEX }, length: { in: 1..35 }, if: :is_save_base_info?
+  validates :street2, allow_blank: true, format: { with: VALID_ROMAN_REGEX}, length: { maximum: 50 }, if: :is_save_base_info?
+  validates :city,             presence: true, format: { with: ALPHABETS_NUMBERS_ONLY }, length: { in: 1..35 }, if: :is_save_base_info?
   validates :region, allow_blank: true, format: { with: ALPHABETS_NUMBERS_ONLY }, if: :is_save_base_info?
   validates :btc_address,      presence: true, format: { with: BTC_ADDRESS }, if: :is_save_base_info?
 
