@@ -95,8 +95,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.public_file_server.headers = {
-    'Cache-Control' => "public, s-maxage=#{365.days.to_i}, maxage=#{180.days.to_i}",
-    'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
-  }
+  config.static_cache_control = "public, s-maxage=#{365.days.to_i}, maxage=#{180.days.to_i}"
 end
