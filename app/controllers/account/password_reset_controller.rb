@@ -9,7 +9,7 @@ class Account::PasswordResetController < Account::BaseController
     if user
       @password_reset_token = user.password_reset_tokens.new
       if @password_reset_token.save!
-        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :password_reset_request, obj: @password_reset_token)).deliver_now
+        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :password_reset_request, obj: @password_reset_token)).deliver_later
         render action: :mail_sent
       end
     else

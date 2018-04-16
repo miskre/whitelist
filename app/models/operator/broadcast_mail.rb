@@ -7,13 +7,13 @@ class Operator::BroadcastMail < ActiveRecord::Base
   def broadcast
     if send_all_customers
       ::User.all.each do |user|
-        Operator::GeneralMailer.simple_mail(*(mail_params(user))).deliver_now
+        Operator::GeneralMailer.simple_mail(*(mail_params(user))).deliver_later
       end
     else
       users = ::User.where(id: user_ids)
       users.each do |user|
         Operator::UserBMail.create(user_id: user.id, operator_broadcast_mail_id: id)
-        Operator::GeneralMailer.simple_mail(*(mail_params(user))).deliver_now
+        Operator::GeneralMailer.simple_mail(*(mail_params(user))).deliver_later
       end
     end
   end

@@ -1,5 +1,5 @@
-:pidfile: ./tmp/pids/sidekiq.pid
 development:
+  :logfile: ./log/sidekiq.log
   :verbose: true
   :concurrency: 4
 production:

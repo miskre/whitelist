@@ -9,7 +9,7 @@ class Account::UsersController < Account::BaseController
     @wallet_user = ::User.new(wallet_user_params)
     @wallet_user.agreed = true if @wallet_user&.agreed == "on"
     if @wallet_user.save
-      Account::UserMailer.registration_confirmation(@wallet_user).deliver_now
+      Account::UserMailer.registration_confirmation(@wallet_user).deliver_later
       redirect_to account_sign_in_path, flash: {success: t('helpers.messages.sign_up_mail_sended')}
     else
       render :new, flash: {error: "Ooooppss, something went wrong!"}

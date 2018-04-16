@@ -10,12 +10,12 @@ class Account::SessionsController < Account::BaseController
       if user.email_confirmed
         if user.use_two_factor_auth
           begin_two_factor_auth user
-          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :two_factor_auth, obj: user)).deliver_now
+          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :two_factor_auth, obj: user)).deliver_later
           redirect_to action: :otp
         else
           sign_in user
           flash[:success] = 'You have logged in successfully !'
-          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_now
+          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
           redirect_back_or account_root_path
         end
       else
