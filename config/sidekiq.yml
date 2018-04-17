@@ -4,8 +4,8 @@ development:
   :verbose: true
   :concurrency: 4
 production:
-  # :daemon: true
-
+  :daemon: true
+  :logfile: ./log/sidekiq_pro.log
   :concurrency: 10
 :queues:
   - default

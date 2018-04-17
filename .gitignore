@@ -1,5 +1,6 @@
 /log/*
 !/log/.keep
+!/log/sidekiq_pro.log
 /tmp
 
 /vendor/bundle
