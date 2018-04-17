@@ -1,12 +1,12 @@
-:pidfile: tmp/pids/sidekiq.pid
-development:
-  :logfile: ./log/sidekiq.log
-  :verbose: true
-  :concurrency: 4
-production:
-  :daemon: true
-  :logfile: ./log/sidekiq_pro.log
-  :concurrency: 10
+# :pidfile: tmp/pids/sidekiq.pid
+# development:
+#   :logfile: ./log/sidekiq.log
+#   :verbose: true
+#   :concurrency: 4
+# production:
+#   :daemon: true
+#   :logfile: ./log/sidekiq_pro.log
+#   :concurrency: 10
 :queues:
   - default
   - mailers
