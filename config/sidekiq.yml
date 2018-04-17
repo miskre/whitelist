@@ -1,9 +1,11 @@
+:pidfile: tmp/pids/sidekiq.pid
 development:
   :logfile: ./log/sidekiq.log
   :verbose: true
   :concurrency: 4
 production:
   # :daemon: true
+
   :concurrency: 10
 :queues:
   - default
