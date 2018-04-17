@@ -43,7 +43,7 @@ html
     #top-bar
       a.menu data-aos="fade-right" data-aos-duration="1000" href="#" 
         = image_tag "menu.svg"
-      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{account_root_path}" 
+      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{ENV['miskre_main_page']}" 
         = image_tag "logo.v2.svg"
       - if params[:controller] == "account/users" && params[:action] == "new"
         = link_to "login", account_sign_in_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
