@@ -1,3 +1,4 @@
+//= require jquery_ujs
 //= require account/whitepaper.dist
 //= require account/jquery.validate
 //= require account/verify
