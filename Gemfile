@@ -107,7 +107,7 @@ gem 'faraday', '~> 0.9.1'
 gem 'config'
 
 gem 'redis-namespace'
-
+gem 'redis', '~> 3.0'
 # Sidekiq
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'

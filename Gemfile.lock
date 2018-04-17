@@ -390,6 +390,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   ransack
   react-rails
+  redis (~> 3.0)
   redis-namespace
   rotp
   rqrcode
