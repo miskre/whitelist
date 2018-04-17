@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   scope "(:locale)", locale: /en/  do
     root "account/home#status"
     namespace :account do
