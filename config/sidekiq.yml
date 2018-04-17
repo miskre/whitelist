@@ -5,7 +5,7 @@ development:
   :concurrency: 4
 production:
   :daemon: true
-  # :logfile: ./log/sidekiq_pro.log
+  :logfile: ./log/sidekiq_pro.log
   :concurrency: 10
 :queues:
   - default
