@@ -2,6 +2,8 @@ doctype html
 html
   head
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    = stylesheet_link_tag 'account/application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
     meta charset="utf-8"
     meta content="width=device-width, initial-scale=1.0, user-scalable = no" name="viewport"
     meta content="yes" name="apple-mobile-web-app-capable"
@@ -20,8 +22,7 @@ html
     meta content="image/jpeg" property="og:image:type"
     meta content="600" property="og:image:width"
     meta content="315" property="og:image:height"
-    = stylesheet_link_tag 'account/application', media: 'all', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+    
   body
     #menu.h
       ul.navigations
@@ -66,6 +67,6 @@ html
     script src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"
 
-    = javascript_include_tag 'account/application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'account/application', 'data-turbolinks-track': true, async: true
     / script src="/assets/js/jquery.validate.js"
     / script src="/assets/js/verify.js"
