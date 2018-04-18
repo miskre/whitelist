@@ -10,10 +10,10 @@ class Account::PasswordResetController < Account::BaseController
       @password_reset_token = user.password_reset_tokens.new
       if @password_reset_token.save!
         Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :password_reset_request, obj: @password_reset_token)).deliver_later
-        render action: :mail_sent
+        redirect_to account_sign_in_path, flash: {success: 'Now, we sent you a reset link. Please check your email box.'}
       end
     else
-      flash.now[:error] = "We already sent reset password token to your email"
+      flash.now[:success] = "We already sent reset password token to your email"
       render action: :new
     end
   end

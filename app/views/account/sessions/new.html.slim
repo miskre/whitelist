@@ -9,16 +9,14 @@
           | or still not in the list?
           = link_to "register now →", account_sign_up_path, class: "ml-10"
         = form_for :session, url: account_sign_in_path, :html => {class: 'login'} do |f|
-          .top-link
-            = flash[:error]
           .rw data-aos="fade-right" 
             .cl.md-6
               label
                 | email
-                = f.text_field :email, placeholder: 'Email', autofocus: true
+                = f.email_field :email, placeholder: 'Email', autofocus: true, required: :required
               label
                 | password
-                = f.password_field :password, placeholder: 'Password'
+                = f.password_field :password, placeholder: 'Password', required: :required
               .sw.a.rd
                 input#accept-tos type="checkbox" name="session[remember_me]"
                 label.ib for="accept-tos" 
