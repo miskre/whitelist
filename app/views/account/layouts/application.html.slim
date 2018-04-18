@@ -66,3 +66,19 @@ html
         = image_tag "slack.v2.svg"
     .remodal-bg
       = yield
+  - flash.each do |type, msg|
+    javascript:
+      $(document).ready(function() {
+          setTimeout(function() {
+              toastr.options = {
+                  closeButton: true,
+                  progressBar: true,
+                  showMethod: 'slideDown',
+                  timeOut: 0
+              };
+              toastr.#{type}("#{msg}");
+
+          }, 500);
+
+      });
+
