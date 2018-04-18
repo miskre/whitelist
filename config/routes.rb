@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
   scope "(:locale)", locale: /en/  do
     root "account/home#status"
     namespace :account do
@@ -56,6 +54,11 @@ Rails.application.routes.draw do
       delete 'sign_out'         => 'sessions#destroy'
 
       root to: 'home#index'
+      require 'sidekiq/web'
+      Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+        [user, password] == [ENV['SIDEKIQ_USER'], ENV['SIDEKIQ_PASSWD']]
+      end
+      mount Sidekiq::Web => '/sidekiq_miskre_2018'
     end
   end
 end

@@ -39,6 +39,10 @@ nav.navbar-default.navbar-static-side role="navigation"
           = link_to operator_reasons_path do
             i.fa.fa-comment
             span.nav-label Reason list
+        li
+          = link_to operator_sidekiq_web_path, target: "_blank" do
+            i.fa.fa-heartbeat
+            span.nav-label Sidekiq
         li class=("active" if (params[:controller] == 'operator/maintenance_settings'))
           = link_to operator_maintenance_setting_path do
             i.fa.fa-wrench
