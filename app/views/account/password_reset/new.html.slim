@@ -7,7 +7,7 @@
       .top-link data-aos="fade-down" 
         | or try to login again
         = link_to "login now →", account_sign_in_path, class: "ml-10"
-      = form_for :session, url: account_password_reset_request_path, :html => {class: 'login'}
+      = form_for :session, url: account_password_reset_request_path, :html => {class: "login", id: "forget-password"}
         .rw data-aos="fade-right" 
           .cl.md-6
             label

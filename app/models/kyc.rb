@@ -21,14 +21,14 @@ class Kyc < ActiveRecord::Base
   validates :region, allow_blank: true, format: { with: ALPHABETS_NUMBERS_ONLY }, if: :is_save_base_info?
   validates :btc_address,      presence: true, format: { with: BTC_ADDRESS }, if: :is_save_base_info?
 
-  has_attached_file :face_and_passport, unless: :is_save_base_info?
-  has_attached_file :passport, unless: :is_save_base_info?
-  has_attached_file :face_and_license, unless: :is_save_base_info?
-  has_attached_file :license, unless: :is_save_base_info?
-  has_attached_file :license_reverse, unless: :is_save_base_info?
-  has_attached_file :national_id_card, unless: :is_save_base_info?
-  has_attached_file :national_id_card_reverse, unless: :is_save_base_info?
-  has_attached_file :face_and_national_id_card, unless: :is_save_base_info?
+  has_attached_file :face_and_passport, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :passport, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :face_and_license, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :license, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :license_reverse, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :national_id_card, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :national_id_card_reverse, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
+  has_attached_file :face_and_national_id_card, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
 
   private
     def is_save_base_info?

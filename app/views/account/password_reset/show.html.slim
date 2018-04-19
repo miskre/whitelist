@@ -6,7 +6,7 @@
         h1 reset password
       .top-link data-aos="fade-down" 
         |please enter new password
-      = form_tag account_password_reset_path, :html => {class: 'login'}
+      = form_tag account_password_reset_path, class: 'login', id: "set-new-password"
         .rw data-aos="fade-right" 
           .cl.md-6
             label

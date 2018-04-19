@@ -50,10 +50,11 @@
               | retype password
               = f.password_field :password_confirmation, required: true, placeholder: "Password Confirmation"
             .sw.a.rd
-              input#accept-tos name="user[agreed]"type="checkbox"
+              input#accept-tos name="user[agreed]"type="checkbox" title="Please agree to our policy!"
               label.ib for="accept-tos" 
               span.caption I agree all whitelist terms which be listed 
               a data-remodal-target="tos" href="#"  here
+              .error-text
           .cl.md-6
         .rw data-aos="fade-up" 
           .cl

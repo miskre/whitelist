@@ -101,36 +101,6 @@ en:
       payment_method:        payment type
       purpose:               purpose for payment
       transfer_maximum:      maximum  amount for transfer
-      revollet_default:
-        item_1:       If you use an agency（Deposit to JPY account）
-        item_2:       There will be 3,000 yen a day for commission fee. (deposit can be made until 3pm on the day of weekdays)
-        item_3:      Please be sure to enter your User ID of Revollet on the blank of  “Memo” or  “Name of transfer” And transfer your funds.
-        item_4:      Please pay close attention and confirm to enter your  “UserID”correctly before you make any transfer, otherwise your funds won’t reflect on your account balance. (Note/ wrong UserID is also not acceptable)
-        item_5:       Eg) Client name [Taro Tanaka]  →  『1234567 TANAKA TARO』
-        item_6:       It will be charged the commission fee to the person who makes transfer
-        item_7_html:  Please Email us to support@revollet.com after you made deposit about your transfer money.<br>Also, please keep the "transfer  statement" until you confirm to receive the funds into your Revollet account.<br>Please capture the screen of your transfer and keep it if you made transfer by internet banking.
-        item_7_1_html: Storage agency fee <br/>In the case of 5 million yen 1,000 yen / in the case of 5 million to 10 million 0.5% / 1 million in case of 1%
-        item_8:       If deposit to at USD dollar account
-        item_9:       Please deposit the account below
-        item_10_html: Please be sure to enter your Revollet User ID in the blank of “Reference” or “Message to Beneficiary”. <br>If your User ID is not confirmed, deposit will not be able to made sometimes.
-        item_11:      When you deposit funds,  please be sure to enter the name of transfer and the account of Revollet are exactly the same, otherwise your funds will not reflect on your bank account.
-        item_12:      If deposit to at JPY account
-        item_13:      There will be 5,000 yen a day for commission fee. (deposit can be made until 3pm on the day of weekdays)
-      asianpay_default:
-        item_1:  If remittent from Japan
-        item_2:  For depositing funds to Asian Pay accounts, please remittent to the agencies of our designation.
-        item_3:  If remittent from overseas (Not from Japan)
-        item_4:  Bank information
-        item_5:  If remittent by JPY
-        item_6:  If remittent by USD
-        item_7:  Beneficiary information
-        item_8:  Enter your Asian Pay account number here
-        item_9:  wire transfer
-        item_10: Account transfer
-        item_11: Foreign currency deposits
-        item_12: Client burden
-        item_13: No limitation
-      oceanpay_default:
     card_deposit:
       title: Credit card deposit
       new: New deposit

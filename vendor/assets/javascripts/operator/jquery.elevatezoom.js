@@ -1745,7 +1745,7 @@ if ( typeof Object.create !== 'function' ) {
 			easingAmount: 12,
 			lensSize: 200,
 			zoomWindowWidth: 400,
-			zoomWindowHeight: 400,
+			zoomWindowHeight: 300,
 			zoomWindowOffetx: 0,
 			zoomWindowOffety: 0,
 			zoomWindowPosition: 1,
