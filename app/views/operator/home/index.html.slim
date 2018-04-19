@@ -2,34 +2,103 @@
   .row.white-bg
     .col-lg-9
       h2.reciept-font.m-t
-        i.fa.fa-money.m-r
+        i.fa.fa-desktop.m-r
         | Home
   .row.m-t
     .col-lg-6
       .ibox.float-e-margins
         .ibox-title
-          h5 Amount Analytics
+          h5
+            i.fa.fa-money.m-r
+            |Amount Analytics
         .ibox-content
-          strong Today:&nbsp;
-          |1000BTC
+          .row
+            .col-sm-12
+              strong Total amount on all KYCs 
+          .row
+            - @amount_range_all.each do |amount|
+              .col-sm-4
+                .widget.style1.yellow-bg
+                  .row
+                    .col-xs-12
+                      span
+                        |●  
+                        = AMOUNT_RANGE[amount.amount_range]
+                    .col-xs-12.text-right
+                      span.reciept-font = amount.count
           hr
-          strong Yesterday:&nbsp;
-          |900BTC
-          hr
-          strong This week:&nbsp;
-          |3000BTC
-          hr
-          strong All:&nbsp;
-          |10000BTC
+          .row
+            .col-sm-12
+              strong Total amount on KYCs approved 
+          .row
+            - @amount_range_accepted.each do |amount|
+              .col-sm-4
+                .widget.style1.yellow-bg
+                  .row
+                    .col-xs-12
+                      span
+                        |●  
+                        = AMOUNT_RANGE[amount.amount_range]
+                    .col-xs-12.text-right
+                      span.reciept-font = amount.count
 
     .col-lg-6
       .ibox.float-e-margins
         .ibox-title
-          h5 User Analytics
+          h5
+            i.fa.fa-user.m-r
+            |User Analytics
         .ibox-content
-          strong Total User:&nbsp;
-          |2015 Users
-          hr
-          strong Total KYCs:&nbsp;
-          |2000
-          
+          .row
+            .ibox-content
+              .row
+                .col-sm-12
+                  strong Total users:&nbsp;
+                  = @total_user
+              .row
+                .col-sm-6
+                  .widget.style1.yellow-bg
+                    .row
+                      .col-xs-12
+                        span ● Users confirmed email
+                      .col-xs-12.text-right
+                        span.reciept-font = @confirmed_email
+                .col-sm-6
+                  .widget.style1.yellow-bg
+                    .row
+                      .col-xs-12
+                        span ● Users not confirmed email
+                      .col-xs-12.text-right
+                        span.reciept-font = @not_confirmed_email
+              hr
+              .row
+                .col-sm-12
+                  strong Total users submitted KYC:&nbsp;
+                  = @submit_kyc
+              .row
+                .col-sm-4
+                  .widget.style1.yellow-bg
+                    .row
+                      .col-xs-12
+                        span ● Total KYC pending
+                      .col-xs-12.text-right
+                        span.reciept-font = @kyc_pending
+                .col-sm-4
+                  .widget.style1.yellow-bg
+                    .row
+                      .col-xs-12
+                        span ● Total KYC approved
+                      .col-xs-12.text-right
+                        span.reciept-font = @kyc_approved
+                .col-sm-4
+                  .widget.style1.yellow-bg
+                    .row
+                      .col-xs-12
+                        span ● Total KYC rejected
+                      .col-xs-12.text-right
+                        span.reciept-font = @kyc_rejected
+              hr
+              .row
+                .col-sm-12
+                  strong Total users not submitted KYC:&nbsp;
+                  = @not_submit_kyc
