@@ -23,11 +23,11 @@ class Account::UsersController < Account::BaseController
         user.email_activate
         sign_in user
 
-        redirect_to account_root_path, flash: {success: 'Wellcome !!'}
+        redirect_to account_info_path, flash: {success: 'Welcome'}
       end
     else
-      flash[:error] = "Sorry. User does not exist"
-      redirect_to '/'
+      flash[:error] = "Sorry, this confirmation token incorrect"
+      redirect_to account_root_path
     end
   end
 
