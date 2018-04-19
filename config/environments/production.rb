@@ -95,5 +95,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.static_cache_control = "public, max-age=2592000"
+  # config.static_cache_control = "public, max-age=2592000"
 end
