@@ -8,6 +8,10 @@
   };
 
   var validateBasicInfo = function() {
+    $("#kyc_btc_address").on("change", function() {
+      $("#kyc_btc_address").val($("#kyc_btc_address").val().trim());
+    });
+
     $.validator.addMethod(
       "regex",
       function(value, element, regexp) {
