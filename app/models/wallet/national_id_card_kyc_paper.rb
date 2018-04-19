@@ -22,6 +22,6 @@ class Wallet::NationalIdCardKycPaper < ::Kyc
     unless: :is_save_base_info?
   )
   validates :national_id_card_reverse, attachment_presence: true, on: :for_user, unless: :is_save_base_info?
-  validates :national_id_card_number, presence: true, on: :for_user, format: { with: CARD_NUMBER_ONLY}, unless: :is_save_base_info?
+  validates :national_id_card_number, presence: true, uniqueness: true, on: :for_user, format: { with: CARD_NUMBER_ONLY}, unless: :is_save_base_info?
 
 end

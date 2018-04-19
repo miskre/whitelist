@@ -23,31 +23,26 @@
         },
         "kyc[full_name]": {
           required: true,
-          maxlength: 50,
-          regex : /^[a-zA-Z ]+$/
+          maxlength: 70
         },
         "kyc[birth_date]": {
           required: true
         },
         "kyc[street]": {
           required: true,
-          maxlength: 50,
-          regex : /^[a-zA-Z0-9# ,.-]+$/
+          maxlength: 70
         },
         "kyc[street2]": {
-          maxlength: 50,
-          regex : /^[a-zA-Z0-9# ,.-]+$/
+          maxlength: 70
         },
         "kyc[region]": {
           maxlength: 35,
-          minlength: 2,
-          regex: /^[a-zA-Z0-9 ]+$/
+          minlength: 2
         },
         "kyc[city]": {
           required: true,
           maxlength: 35,
-          minlength: 2,
-          regex: /^[a-zA-Z0-9 ]+$/
+          minlength: 2
         },
         "kyc[amount_range]": {
           required: true,

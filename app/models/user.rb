@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :password_reset_tokens
   
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, allow_nil: true, confirmation: true, length: { minimum: 6 }
   validates :agreed, presence: true,
     acceptance: {accept: true}
 

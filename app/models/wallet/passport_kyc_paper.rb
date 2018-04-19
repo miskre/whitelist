@@ -14,5 +14,5 @@ class Wallet::PassportKycPaper < ::Kyc
     unless: :is_save_base_info?
   )
   validates :passport, attachment_presence: true, on: :for_user, unless: :is_save_base_info?
-  validates :passport_number, presence: true, on: :for_user, format: { with: PASSPORT_ONLY}, unless: :is_save_base_info?
+  validates :passport_number, presence: true, uniqueness: true, on: :for_user, format: { with: PASSPORT_ONLY}, unless: :is_save_base_info?
 end
