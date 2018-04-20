@@ -17,6 +17,8 @@
               label
                 | password
                 = f.password_field :password, placeholder: 'Password', required: :required
+              label
+                = recaptcha_tags
               .sw.a.rd
                 input#accept-tos type="checkbox" name="session[remember_me]"
                 label.ib for="accept-tos" 

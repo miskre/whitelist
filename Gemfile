@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use mysql as the database for Active Record
@@ -74,7 +73,7 @@ group :development do
 end
 
 # slim
-gem 'slim-rails'
+gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -138,3 +137,4 @@ gem 'httparty'
 gem 'addressable'
 # Use  for create variable ENV
 gem 'figaro', '~> 1.1.1'
+gem "recaptcha", require: "recaptcha/rails"

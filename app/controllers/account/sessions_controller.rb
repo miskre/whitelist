@@ -6,25 +6,30 @@ class Account::SessionsController < Account::BaseController
 
   def create
     user = ::User.find_by_email(params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
-      if user.email_confirmed
-        if user.use_two_factor_auth
-          begin_two_factor_auth user
-          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :two_factor_auth, obj: user)).deliver_later
-          redirect_to action: :otp
+    if verify_recaptcha(model: user)
+      if user && user.authenticate(params[:session][:password])
+        if user.email_confirmed
+          if user.use_two_factor_auth
+            begin_two_factor_auth user
+            Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :two_factor_auth, obj: user)).deliver_later
+            redirect_to action: :otp
+          else
+            sign_in user
+            flash[:success] = 'You have logged in successfully !'
+            Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
+            redirect_back_or account_root_path
+          end
         else
-          sign_in user
-          flash[:success] = 'You have logged in successfully !'
-          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
-          redirect_back_or account_root_path
+          flash.now[:error] = 'Please activate your account by following the
+          instructions in the account confirmation email you received to proceed'
+          render action: :new
         end
       else
-        flash.now[:error] = 'Please activate your account by following the
-        instructions in the account confirmation email you received to proceed'
+        flash.now[:error] = "Invalid UserID or Password!"
         render action: :new
       end
     else
-      flash.now[:error] = "Invalid UserID or Password!"
+      flash.now[:error] = "The data you entered for the CAPTCHA wasn't correct. Please try again"
       render action: :new
     end
   end
