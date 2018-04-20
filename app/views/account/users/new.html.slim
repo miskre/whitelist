@@ -32,12 +32,6 @@
         | or already on the list?
         = link_to "login now →", account_sign_in_path, class: "ml-10"
       = form_for @wallet_user, url: account_users_path, :html => {class: 'm-t', id: 'register'} do |f|
-        - if @wallet_user.errors.any?
-          .top-link
-            - @wallet_user.errors.full_messages.each do |message|
-              p
-                | ・
-                = message
         .rw data-aos="fade-right" 
           .cl.md-6
             label
@@ -49,6 +43,8 @@
             label
               | retype password
               = f.password_field :password_confirmation, required: true, placeholder: "Password Confirmation"
+            label
+              = recaptcha_tags
             .sw.a.rd
               input#accept-tos name="user[agreed]"type="checkbox" title="Please agree to our policy!"
               label.ib for="accept-tos" 

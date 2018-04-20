@@ -7,12 +7,17 @@ class Account::UsersController < Account::BaseController
 
   def create
     @wallet_user = ::User.new(wallet_user_params)
-    @wallet_user.agreed = true if @wallet_user&.agreed == "on"
-    if @wallet_user.save
-      Account::UserMailer.registration_confirmation(@wallet_user).deliver_later
-      redirect_to account_sign_in_path, flash: {success: t('helpers.messages.sign_up_mail_sended')}
+    if verify_recaptcha(model: @wallet_user)
+      @wallet_user.agreed = true if @wallet_user&.agreed == "on"
+      if @wallet_user.save
+        Account::UserMailer.registration_confirmation(@wallet_user).deliver_later
+        redirect_to account_sign_in_path, flash: {success: t('helpers.messages.sign_up_mail_sended')}
+      else
+        render :new, flash: {error: "Ooooppss, something went wrong!"}
+      end
     else
-      render :new, flash: {error: "Ooooppss, something went wrong!"}
+      flash.now[:error] = "The data you entered for the CAPTCHA wasn't correct. Please try again"
+      render action: :new
     end
   end
 
