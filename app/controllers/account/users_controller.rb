@@ -13,10 +13,11 @@ class Account::UsersController < Account::BaseController
         Account::UserMailer.registration_confirmation(@wallet_user).deliver_later
         redirect_to account_sign_in_path, flash: {success: t('helpers.messages.sign_up_mail_sended')}
       else
-        render :new, flash: {error: "Ooooppss, something went wrong!"}
+        flash.now[:error] = "Ooooppss, something went wrong!"
+        render action: :new
       end
     else
-      flash.now[:error] = "The data you entered for the CAPTCHA wasn't correct. Please try again"
+      flash.now[:error] = "The data you entered for the CAPTCHA wasn't correct. Please try again!"
       render action: :new
     end
   end
@@ -31,7 +32,7 @@ class Account::UsersController < Account::BaseController
         redirect_to account_info_path, flash: {success: 'Welcome'}
       end
     else
-      flash[:error] = "Sorry, this confirmation token incorrect"
+      flash[:error] = "Sorry, this confirmation token incorrect."
       redirect_to account_root_path
     end
   end

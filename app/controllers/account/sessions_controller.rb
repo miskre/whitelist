@@ -15,13 +15,12 @@ class Account::SessionsController < Account::BaseController
             redirect_to action: :otp
           else
             sign_in user
-            flash[:success] = 'You have logged in successfully !'
+            flash[:success] = "You have logged in successfully!"
             Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
             redirect_back_or account_root_path
           end
         else
-          flash.now[:error] = 'Please activate your account by following the
-          instructions in the account confirmation email you received to proceed'
+          flash.now[:error] = "Please activate your account by following the instructions in the account confirmation email you received to proceed"
           render action: :new
         end
       else
@@ -42,7 +41,7 @@ class Account::SessionsController < Account::BaseController
       user = get_user_while_two_factor_auth
       if user.verify_otp(params[:session][:otp], fixed_time_for_two_factor_auth)
         sign_in_with_two_factor_auth user
-        flash[:success] = 'You have logged in successfully !'
+        flash[:success] = "You have logged in successfully!"
         Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
         redirect_back_or wallet_root_path
       else
