@@ -1,5 +1,6 @@
 class Account::UsersController < Account::BaseController
   skip_before_action :enforce_sign_in
+  before_action :set_user
 
   def new
     @wallet_user = ::User.new
@@ -37,8 +38,30 @@ class Account::UsersController < Account::BaseController
     end
   end
 
+  def account
+  end
+
+  def update
+    @wallet_user.assign_attributes(password_params)
+    @wallet_user.agreed = true
+    if @wallet_user.save
+      redirect_to account_root_path, flash: {success: t('helpers.messages.changed_pw')}
+    else
+      flash.now[:error] = t('activerecord.errors.messages.wrong_password')
+      render action: :account
+    end
+  end
+
 
   private
+    def set_user
+      @wallet_user = current_user
+    end
+
+    def password_params
+      params.require(:user).permit(:password, :password_confirmation) 
+    end
+
     def wallet_user_params
       params.require(:user).permit(
         :email,

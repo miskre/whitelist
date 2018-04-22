@@ -2,16 +2,17 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en/  do
     root "account/home#status"
     namespace :account do
-      resources :users, only: [:create] do
+      resources :users, only: [:create, :update] do
         member do
           get 'confirm_email'
+        end
+        collection do 
+          get 'account'
         end
       end
 
       get    'sign_in'         => 'sessions#new'
       post   'sign_in'         => 'sessions#create'
-      get    'otp'             => 'sessions#otp'
-      post   'two_factor_auth' => 'sessions#two_factor_auth'
       get    'sign_up' => 'users#new'
       patch   'users/token_update_user'
       get 'sign_out'        => 'sessions#destroy'
