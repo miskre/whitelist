@@ -6,7 +6,7 @@ class Account::SessionsController < Account::BaseController
 
   def create
     user = ::User.find_by_email(params[:session][:email])
-    unless verify_recaptcha(model: user)
+    if verify_recaptcha(model: user)
       if user && user.authenticate(params[:session][:password])
         if user.email_confirmed
           if user.use_two_factor_auth
