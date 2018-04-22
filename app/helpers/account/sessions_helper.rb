@@ -64,7 +64,6 @@ module Account::SessionsHelper
   def enforce_sign_in
     if !signed_in?
       store_location
-      flash[:error] = 'Please sign in.'
       redirect_to account_sign_in_path
     elsif !system_available?
       flash[:error] = 'The system is unavailable.'
