@@ -17,7 +17,7 @@ html
     link href="#{image_path('favicon.ico')}" rel=("shortcut icon") type="image/x-icon"
     link href="#{image_path('favicon.ico')}" rel="icon" type="image/x-icon"
     title miskre - empowering the decentralized world
-    meta content="#{ENV['default_url_option']}" property="og:url"
+    meta content="#{ENV['DEFAULT_URL_OPTION']}" property="og:url"
     meta content="miskre - empowering the decentralized world" property="og:title"
     meta content="we might not have an all-star team with people from big corporate backgrounds, but we are the crazy ones with the right skill sets and passion to bring this project to fruition. we are fully prepared to dedicate our lives to this project." property="og:description"
     meta content="article" property="og:type"
@@ -32,23 +32,23 @@ html
     #menu.h
       ul.navigations
         li
-          a href="#{ENV['miskre_main_page']}/#home" home
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#home" home
         li
-          a href="#{ENV['miskre_main_page']}/whitepaper.html" whitepaper
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/whitepaper.html" whitepaper
         li
-          a href="#{ENV['miskre_main_page']}/#roadmap" roadmap
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#roadmap" roadmap
         li
-          a href="#{ENV['miskre_main_page']}/#team" team
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#team" team
         li
-          a href="#{ENV['miskre_main_page']}/#faqs" faqs
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#faqs" faqs
         li
-          a href="#{ENV['miskre_main_page']}/#blog" blog
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#blog" blog
         li
-          a href="#{ENV['miskre_main_page']}/#reach" reach
+          a href="#{ENV['MISKRE_MAIN_PAGE']}/#reach" reach
     #top-bar
       a.menu data-aos="fade-right" data-aos-duration="1000" href="#" 
         = image_tag "menu.svg"
-      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{ENV['miskre_main_page']}" 
+      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{ENV['MISKRE_MAIN_PAGE']}" 
         = image_tag "logo.v2.svg"
       - if params[:controller] == "account/users" && params[:action] == "new"
         = link_to "login", account_sign_in_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
