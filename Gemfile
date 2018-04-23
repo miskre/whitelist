@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use mysql as the database for Active Record
@@ -34,8 +33,8 @@ gem 'unicorn'
 
 # pry
 gem 'pry-rails'
-gem 'hirb'
-gem 'hirb-unicode'
+# gem 'hirb'
+# gem 'hirb-unicode'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,7 +73,7 @@ group :development do
 end
 
 # slim
-gem 'slim-rails'
+gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -84,8 +83,6 @@ gem 'font-awesome-rails', '4.3.0.0'
 
 # separate seed file
 gem 'seedbank'
-
-gem 'annotate'
 
 gem 'ransack'
 
@@ -107,7 +104,7 @@ gem 'faraday', '~> 0.9.1'
 gem 'config'
 
 gem 'redis-namespace'
-
+gem 'redis', '~> 3.0'
 # Sidekiq
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'
@@ -138,3 +135,4 @@ gem 'httparty'
 gem 'addressable'
 # Use  for create variable ENV
 gem 'figaro', '~> 1.1.1'
+gem "recaptcha", require: "recaptcha/rails"

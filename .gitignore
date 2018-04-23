@@ -14,9 +14,8 @@ config/environments/*.local.yml
 
 .bundle/
 
-public/assets/*
-
 # app/assets/javascripts/i18n/*
 
 .idea/
 /config/application.yml
+/dump.rdb

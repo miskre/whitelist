@@ -1,6 +1,6 @@
 Hi <# UserEmail #>,
 
-Thank you for using MISKRE this time.
+Thank you for using miskre this time.
 Since you have logged in with your account, we will send you a one-time password for 2-step verification.
 The valid time of this password is <# AvailableSeconds #>
 

@@ -22,7 +22,7 @@ module Account
       end
       @kyc_paper.save_base_info = true
       if @kyc_paper.save(context: :for_user)
-        redirect_to account_verify_path, flash: {success: 'successfully created.'}
+        redirect_to account_verify_path, flash: {success: 'successfully updated.'}
       else
         p @kyc_paper.errors&.full_messages
         render :index
@@ -31,7 +31,7 @@ module Account
 
     def verify
       unless @kyc_paper.present?
-        redirect_to account_info_path, flash: {success: 'You need to enter whitelist info first.'}
+        redirect_to account_info_path, flash: {error: 'You need to enter whitelist info.'}
       end
     end
 
@@ -51,10 +51,10 @@ module Account
 
     def status
       unless @kyc_paper.present?
-        redirect_to account_info_path, flash: {success: 'You need to enter whitelist info first.'}
+        redirect_to account_info_path, flash: {error: 'You need to enter whitelist info.'}
       else
         if @kyc_paper.status == nil
-          redirect_to account_verify_path, flash: {success: 'You need to enter verify info first.'}
+          redirect_to account_verify_path, flash: {error: 'You need to enter verify info.'}
         end
       end
     end

@@ -1,58 +1,14 @@
----
 en:
-  wallet:
-    exchange:
-      xid:
-        ccex_notice_html: ※Please be aware of the rates showing below are as a guide. <br>※It'll be handling beyond 0.0005 BTC.
-    torihiki_type:
-      openaccount: opening account
-      deposit: deposit
-      transfer: transfer
-      remittance: remittance
-      exchange: exchange
-      cardcharge: cardcharge
-      withdraw: withdrawal
-      oversearemittancefee: overseas remittance commission fee
-      internaltransferfee: transfer commission fee
-      incomingfundsfiatfee: incoming funds fiat fee
-      incomingfundscryptfee: infoming funds crypt fee
-      incomingfundscreditcardfee: incoming funs credit card fee
-      exchangemarkupfee: exchange mark up fee
-      exchangefiatfee: exchange fiat fee
-      exchangecryptfee: exchange crypt fee
-      cardchargefee: cardcharge fee
-      chargebackfee: charge back fee
-      incomingfundsfiatfeejpy: incoming funds fiat fee(cv jpy)
-      incomingfundsfiatfeeusd: incoming funds fiat fee(cv usd)
-      oversearemittancefeejpy: overseas remittance commission fee(cv jpy)
-      oversearemittancefeeusd: overseas remittance commission fee(cv usd)
-      cardchargefeejpy: cardcharge fee(cv jpy)
-      cardchargefeeusd: cardcharge fee(cv usd)
-      exchangemarkupfiatfee: exchange mark up fee(Fiat)
-      exchangemarkupcryptfee: exchange mark up fee(Crypt)
-      exchangemarkupfeebitstamp: bitstamp fee
-      outwardfundscryptfee: outward funds fee(Crypt)
-      createcard: create card
-    remittance_status:
-      false: requesting
-      true: remittance’s been made
-    card_charge_status:
-      false: requesting
-      true: charged
   operator:
     authority:
-      sho:  sho
-      tiku: tiku
-      home_and_history_only: home and history only
-      bai:  bai
+      admin:  Admin
+      home_and_kyc_pending_only: "Staff"
   attributes:
     account_address: account number
   activerecord:
     errors:
       messages:
         now_not_working:          Not working right now
-        not_usd:                  Please select your USD account
-        trading_agreed_check_box: Please accept terms and condition, if you wish to open a trading account
         invalid_user:             invalid_user
         wrong_password:           wrong password
         short_balance:            short balance
@@ -168,7 +124,6 @@ en:
       second: second
       year: year
   errors:
-    agent_dont_have_account: "%{nick} does not have %{currency_code}"
     format: "%{attribute} %{message}"
     messages:
       different: different
@@ -184,12 +139,12 @@ en:
       greater_than_or_equal_to: "Please make it bigger than %{count}"
       inclusion: not on the list
       invalid: is invalid
-      less_than: "Please make it smaller than %{count}"
-      less_than_or_equal_to: "Please make it smaller than %{count}"
+      less_than: "please make it smaller than %{count}"
+      less_than_or_equal_to: "please make it smaller than %{count}"
       model_invalid: "fail to the validation: %{errors}"
-      not_a_number: Please digit  as
-      not_an_integer: Please enter integer
-      odd: Please enter odd
+      not_a_number: please digit  as
+      not_an_integer: please enter integer
+      odd: please enter odd
       required: please enter
       taken: already exist
       untaken: not exist
@@ -268,11 +223,11 @@ en:
       storage_units:
         format: "%n%u"
         units:
-          byte: byte
-          gb: gb
-          kb: kb
-          mb: mb
-          tb: tb
+          byte: Byte
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
     percentage:
       format:
         delimiter:

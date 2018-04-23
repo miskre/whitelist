@@ -2,6 +2,13 @@ doctype html
 html
   head
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    = stylesheet_link_tag 'account/application', media: 'all', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"
+    = javascript_include_tag 'account/application', async: true, 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
     meta charset="utf-8"
     meta content="width=device-width, initial-scale=1.0, user-scalable = no" name="viewport"
     meta content="yes" name="apple-mobile-web-app-capable"
@@ -9,10 +16,9 @@ html
     meta content="black" name="apple-mobile-web-app-status-bar-style"
     link href="#{image_path('favicon.ico')}" rel=("shortcut icon") type="image/x-icon"
     link href="#{image_path('favicon.ico')}" rel="icon" type="image/x-icon"
-    = stylesheet_link_tag 'account/application', media: 'all'
     title miskre - empowering the decentralized world
     meta content="#{ENV['default_url_option']}" property="og:url"
-    meta content="miskre - empowering the decentrailized world" property="og:title"
+    meta content="miskre - empowering the decentralized world" property="og:title"
     meta content="we might not have an all-star team with people from big corporate backgrounds, but we are the crazy ones with the right skill sets and passion to bring this project to fruition. we are fully prepared to dedicate our lives to this project." property="og:description"
     meta content="article" property="og:type"
     meta content="725786064476346" property="fb:app_id"
@@ -21,6 +27,7 @@ html
     meta content="image/jpeg" property="og:image:type"
     meta content="600" property="og:image:width"
     meta content="315" property="og:image:height"
+    
   body
     #menu.h
       ul.navigations
@@ -41,7 +48,7 @@ html
     #top-bar
       a.menu data-aos="fade-right" data-aos-duration="1000" href="#" 
         = image_tag "menu.svg"
-      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{account_root_path}" 
+      a.logo data-aos="fade-down" data-aos-duration="1000" href="#{ENV['miskre_main_page']}" 
         = image_tag "logo.v2.svg"
       - if params[:controller] == "account/users" && params[:action] == "new"
         = link_to "login", account_sign_in_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
@@ -59,4 +66,19 @@ html
         = image_tag "slack.v2.svg"
     .remodal-bg
       = yield
-    = javascript_include_tag 'account/application'
+  - flash.each do |type, msg|
+    javascript:
+      $(document).ready(function() {
+          setTimeout(function() {
+              toastr.options = {
+                  closeButton: true,
+                  progressBar: true,
+                  showMethod: 'slideDown',
+                  timeOut: 0
+              };
+              toastr.#{type}("#{msg}");
+
+          }, 500);
+
+      });
+

@@ -11,8 +11,17 @@ nav.navbar-default.navbar-static-side role="navigation"
         = link_to operator_root_path do
           i.fa.fa-desktop
           span.nav-label Home
-
-      - if current_operator_user.authority == Operator::Authority::SHO
+      - if current_operator_user.authority == Operator::Authority::HOME_AND_KYC_PENDING_ONLY
+        li class=("active" if current_page?(controller: 'kyc_pending_wallet_users'))
+          = link_to operator_kyc_pending_wallet_users_path do
+            i.fa.fa-newspaper-o
+            span.nav-label KYCs Pending
+            span.label.label-warning.pull-right = Kyc.where(status: "pending").count
+        li class=("active" if current_page?(controller: 'broadcast_mails'))
+          = link_to operator_broadcast_mails_path do
+            i.fa.fa-envelope-o
+            span.nav-label Broadcast Mail
+      - if current_operator_user.authority == Operator::Authority::ADMIN
        
         li class=("active" if current_page?(controller: 'kyc_pending_wallet_users'))
           = link_to operator_kyc_pending_wallet_users_path do
@@ -39,6 +48,10 @@ nav.navbar-default.navbar-static-side role="navigation"
           = link_to operator_reasons_path do
             i.fa.fa-comment
             span.nav-label Reason list
+        li
+          = link_to operator_sidekiq_web_path, target: "_blank" do
+            i.fa.fa-heartbeat
+            span.nav-label Sidekiq
         li class=("active" if (params[:controller] == 'operator/maintenance_settings'))
           = link_to operator_maintenance_setting_path do
             i.fa.fa-wrench

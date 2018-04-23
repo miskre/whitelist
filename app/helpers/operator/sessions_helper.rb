@@ -54,12 +54,12 @@ module Operator::SessionsHelper
 
   def operator_permitted?
     case controller_name
-    when 'home', 'history'
-      unless current_operator_user.authority.value >= Operator::Authority::HOME_AND_HISTORY_ONLY.value
+    when 'home', 'kyc_pending_wallet_users', 'broadcast_mails'
+      unless current_operator_user.authority.value >= Operator::Authority::HOME_AND_KYC_PENDING_ONLY.value
         redirect_to operator_root_path
       end
     else
-      unless current_operator_user.authority == Operator::Authority::SHO
+      unless current_operator_user.authority == Operator::Authority::ADMIN
         redirect_to operator_root_path
       end
     end

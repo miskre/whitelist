@@ -3,18 +3,16 @@
     .bg style=("background-image: url(#{image_url('metal.jpeg')})") 
     .fg
       .title data-aos="fade-left" 
-        h1 Reset password
+        h1 reset password
       .top-link data-aos="fade-down" 
         | or try to login again
         = link_to "login now →", account_sign_in_path, class: "ml-10"
-      = form_for :session, url: account_password_reset_request_path, :html => {class: 'login'}
-        .top-link
-          = flash[:error]
+      = form_for :session, url: account_password_reset_request_path, :html => {class: "login", id: "forget-password"}
         .rw data-aos="fade-right" 
           .cl.md-6
             label
               | email
-              input type="text" name="email" placeholder="Email" autofocus="true"
+              input type="email" name="email" placeholder="Email" autofocus="true" required="required"
         .rw data-aos="fade-up" 
           .cl
             = button_tag "send email", class: "dis"

@@ -1,5 +1,10 @@
-//= require operator/jquery/jquery-2.1.1.js
 //= require jquery_ujs
-//= require account/verify
+//= require operator/toastr/toastr.min
 //= require account/whitepaper.dist
-//= require_tree .
+//= require account/jquery.validate
+//= require account/additional-methods.min
+//= require account/verify
+//= require account/basic_info
+//= require account/sign_up
+//= require account/sign_in
+//= require account/reset_password 

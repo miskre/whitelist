@@ -1,27 +1,4 @@
 module Account::SessionsHelper
-  def begin_two_factor_auth(user)
-    session[:begin_two_factor_auth] = Time.now
-    session[:temporary_wallet_user_id] = user.id
-  end
-
-  def while_two_factor_auth?
-    session[:begin_two_factor_auth].present? && session[:temporary_wallet_user_id] && session[:begin_two_factor_auth] >= Settings.two_factor_auth.interval.seconds.ago
-  end
-
-  def get_user_while_two_factor_auth
-    ::User.find(session[:temporary_wallet_user_id])
-  end
-
-  def fixed_time_for_two_factor_auth
-    gap = (session[:begin_two_factor_auth].to_i%Settings.two_factor_auth.interval).seconds
-    Time.now - gap
-  end
-
-  def sign_in_with_two_factor_auth(user)
-    session.delete(:begin_two_factor_auth)
-    session.delete(:temporary_wallet_user_id)
-    sign_in user
-  end    
 
   def sign_in(user)
     session[:last_signed_in_at] = user.last_signed_in_at
@@ -64,7 +41,6 @@ module Account::SessionsHelper
   def enforce_sign_in
     if !signed_in?
       store_location
-      flash[:error] = 'Please sign in.'
       redirect_to account_sign_in_path
     elsif !system_available?
       flash[:error] = 'The system is unavailable.'
@@ -77,10 +53,12 @@ module Account::SessionsHelper
   end
 
   def auto_logout
-    if current_user && session[:operated_at] && 30.minutes.ago >= session[:operated_at]
-      sign_out
-
-      redirect_to account_sign_in_path, flash: {error: 'Time-out error occurred. Please log in again.'}
+    session[:remember_me] ||= false
+    if current_user && session[:operated_at]
+      if session[:remember_me] == false && 30.minutes.ago >= session[:operated_at]
+        sign_out
+        redirect_to account_sign_in_path, flash: {error: 'Time-out error occurred. Please log in again.'}
+      end
     end
   end
 

@@ -1,7 +1,6 @@
 module Operator
   class GeneralMailer < ApplicationMailer
     def send_mail_content(params)
-      #ActiveJobはメソッドの引数にシンボルを取れないので文字列で受け取りシンボルに変換
       params[:kind] = params[:kind].to_sym
 
       content = MailContent.find_by(kind: MailContent.kinds[params[:kind]])
