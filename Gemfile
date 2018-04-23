@@ -84,8 +84,6 @@ gem 'font-awesome-rails', '4.3.0.0'
 # separate seed file
 gem 'seedbank'
 
-gem 'annotate'
-
 gem 'ransack'
 
 gem 'inum', '~> 5.1', '>= 5.1.1'

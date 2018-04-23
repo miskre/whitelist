@@ -17,7 +17,6 @@ class Operator::BaseController < ActionController::Base
   end
 
   private
-  # I18n.locale をセットする
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

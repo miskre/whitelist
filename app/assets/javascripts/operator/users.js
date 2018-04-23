@@ -10,8 +10,8 @@
   var dataTableForWalletUser = function() {
     $("#operator-wallet-user").DataTable({
       "columnDefs": [
-        { "searchable": false, "targets": [6,7] },
-        { "sortable": false, "targets": [6,7] }
+        { "searchable": false, "targets": [2, 3, 4] },
+        { "sortable": false, "targets": [2, 3, 4] }
       ]
     });
   }

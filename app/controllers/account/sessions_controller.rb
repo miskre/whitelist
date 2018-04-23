@@ -9,16 +9,15 @@ class Account::SessionsController < Account::BaseController
     if verify_recaptcha(model: user)
       if user && user.authenticate(params[:session][:password])
         if user.email_confirmed
-          if user.use_two_factor_auth
-            begin_two_factor_auth user
-            Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :two_factor_auth, obj: user)).deliver_later
-            redirect_to action: :otp
+          if params[:session][:remember_me].present?
+            session[:remember_me] = true
           else
-            sign_in user
-            flash[:success] = "You have logged in successfully!"
-            Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
-            redirect_back_or account_root_path
+            session[:remember_me] = false
           end
+          sign_in user
+          flash[:success] = "You have logged in successfully!"
+          Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
+          redirect_back_or account_root_path
         else
           flash.now[:error] = "Please activate your account by following the instructions in the account confirmation email you received to proceed"
           render action: :new
@@ -33,27 +32,6 @@ class Account::SessionsController < Account::BaseController
     end
   end
 
-  # def otp
-  # end
-
-  # def two_factor_auth
-  #   if while_two_factor_auth?
-  #     user = get_user_while_two_factor_auth
-  #     if user.verify_otp(params[:session][:otp], fixed_time_for_two_factor_auth)
-  #       sign_in_with_two_factor_auth user
-  #       flash[:success] = "You have logged in successfully!"
-  #       Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :login, obj: user)).deliver_later
-  #       redirect_back_or wallet_root_path
-  #     else
-  #       flash.now[:error] = "Invalid One-time Password"
-  #       render action: :otp
-  #     end
-  #   else
-  #     flash.now[:error] = "Your two factor authentication seems to be timeout"
-  #     render action: :new
-  #   end
-  # end
-  
   def destroy
     sign_out if signed_in?
     redirect_to account_sign_in_path

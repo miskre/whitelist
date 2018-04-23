@@ -31,13 +31,11 @@ class Operator::WalletKycPapersController < Operator::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_wallet_user
       @wallet_user = ::User.find(params[:wallet_user_id])
       @wallet_kyc_paper = @wallet_user.kyc
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def wallet_kyc_paper_params
       params.require(:wallet_kyc_paper).permit(
         :type,

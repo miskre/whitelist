@@ -17,12 +17,12 @@ module Operator
     def update
       if params[:accept]
         @kyc_pending_wallet_user.kyc.update(status: :accepted)
-        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :opening_account_complete, obj: @kyc_pending_wallet_user)).deliver
-        redirect_to @next_kyc&.kyc&.status == "pending" ? edit_operator_kyc_pending_wallet_user_path(@next_kyc) : operator_kyc_pending_wallet_users_path, flash: {success: 'Kyc pending wallet user was successfully acceped.'}
+        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :opening_account_complete, obj: @kyc_pending_wallet_user)).deliver_later
+        redirect_to @prev_kyc&.kyc&.status == "pending" ? edit_operator_kyc_pending_wallet_user_path(@prev_kyc) : operator_kyc_pending_wallet_users_path, flash: {success: 'Kyc pending wallet user was successfully acceped.'}
       elsif params[:reject] && params[:reason].present?
         @kyc_pending_wallet_user.kyc.update(status: :rejected, message: params[:reason])
-        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :kyc_reject, obj: @kyc_pending_wallet_user)).deliver
-        redirect_to @next_kyc&.kyc&.status == "pending" ? edit_operator_kyc_pending_wallet_user_path(@next_kyc) : operator_kyc_pending_wallet_users_path, flash: {success: 'Kyc pending wallet user was successfully rejected.'}
+        Operator::GeneralMailer.send_mail_content(Operator::MailContent.job_params(kind: :kyc_reject, obj: @kyc_pending_wallet_user)).deliver_later
+        redirect_to @prev_kyc&.kyc&.status == "pending" ? edit_operator_kyc_pending_wallet_user_path(@prev_kyc) : operator_kyc_pending_wallet_users_path, flash: {success: 'Kyc pending wallet user was successfully rejected.'}
       else
         redirect_to operator_kyc_pending_wallet_users_path, flash: {warning: 'Illegal access.'}
       end

@@ -1,4 +1,4 @@
 Hi <# UserEmail #>,
 
-Thank you for using MISKRE this time.
+Thank you for using miskre this time.
 I'm reporting that my application for KYC Paper has been accepted.

@@ -1,1 +1,1 @@
-rvm use 2.3.5@revollet --create
+rvm use 2.4.0@whitelist --create

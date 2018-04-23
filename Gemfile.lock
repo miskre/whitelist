@@ -45,9 +45,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    annotate (2.7.2)
-      activerecord (>= 3.2, < 6.0)
-      rake (>= 10.4, < 13.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -354,7 +351,6 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  annotate
   aws-sdk (< 2.0)
   bcrypt (~> 3.1.7)
   better_errors

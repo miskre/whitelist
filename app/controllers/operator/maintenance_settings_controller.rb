@@ -5,7 +5,6 @@ class Operator::MaintenanceSettingsController < Operator::BaseController
 
   def update
     @setting = Operator::MaintenanceSetting.first_or_create
-
     if @setting.update(setting_params)
       redirect_to operator_maintenance_setting_path, flash: { success: 'Settings are updated.' }
     else
