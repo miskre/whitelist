@@ -43,18 +43,18 @@ Rails.application.configure do
     storage: :s3,
     s3_protocol: :https,
     path: "development/kyc/:attachment/:id_partition/:style/:basename.:extension",
-    bucket: ENV["aws_s3_bucket"],
-    :s3_credentials => {access_key_id: ENV["aws_access_key_id"], secret_access_key: ENV["aws_secret_access_key"]}
+    bucket: ENV["AWS_S3_BUCKET"],
+    :s3_credentials => {access_key_id: ENV["AWS_ACCESS_KEY_ID"], secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]}
   }
 
-  config.action_mailer.default_options = { from: ENV["default_from_mailer"] }
-  config.action_mailer.default_url_options = { host: ENV["default_url_option"]}
+  config.action_mailer.default_options = { from: ENV["DEFAULT_FROM_MAILER"] }
+  config.action_mailer.default_url_options = { host: ENV["DEFAULT_URL_OPTION"]}
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    user_name:            ENV["user_mail_server"],
-    password:             ENV["password_mail_server"],
+    user_name:            ENV["USER_MAIL_SERVER"],
+    password:             ENV["PASSWORD_MAIL_SERVER"],
     authentication:       "plain",
     enable_starttls_auto: true
   }

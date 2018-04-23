@@ -1,11 +1,11 @@
-unless Operator::User.exists?(nickname: 'huytp@miskre')
-  Operator::User.create(nickname: 'huytp@miskre', password: 'miskre@20189999', authority: 10)
+unless Operator::User.exists?(nickname: 'admin@miskre')
+  Operator::User.create(nickname: 'admin@miskre', password: 'operator@2018', authority: 10)
 end
 
-unless Operator::User.find_by(nickname: 'huytp@miskre')&.two_factor_auth_secret
+unless Operator::User.find_by(nickname: 'admin@miskre')&.two_factor_auth_secret
   two_factor_auth_secret = ROTP::Base32.random_base32
-  Operator::User.where(nickname: 'huytp@miskre').update_all(use_two_factor_auth: false, two_factor_auth_secret: two_factor_auth_secret)
-  puts "huytp@miskre two factor secret: #{two_factor_auth_secret}"
+  Operator::User.where(nickname: 'admin@miskre').update_all(use_two_factor_auth: false, two_factor_auth_secret: two_factor_auth_secret)
+  puts "admin@miskre two factor secret: #{two_factor_auth_secret}"
 end
 
 Operator::MailContent.kinds.keys
