@@ -1,4 +1,54 @@
 en:
+  account:
+    home:
+      header:
+        basic_info: "Whitelist Info"
+        verify: "Verify"
+        status: "Approved Status"
+        logout: "logout"
+        change_pass: "change password"
+        hi: "hi, %{name}! "
+      index:
+        errors:                 Errors
+        address:                Address
+        amount:                 Amount want to buy
+        btc_address:            BTC Wallet Address
+        select_country:         Select your country of residence
+        select_amount:          Choose amount you want to buy in crowdsale
+        enter_address:          Enter your BTC address here
+        save:                   save
+        next:                   next
+        enter_full_name:        Enter full name here
+        enter_region:           Enter state/region here
+        enter_city:             Enter city here
+      verify:
+        caution:                              Caution
+        passport_note_html:                   Please upload a passport that the expiry date remains more than four months.<br>Please scan the both pages including mug shots. Selfie is not acceptable.<br>Please use a Scan app if you use your phone to take a photo for ID.
+        face_and_passport_note:               Please upload a photo of yourself and the uploaded ID with your face photo.
+        national_id_card_note_html:           Please upload a page with your face photo.<br>Please upload national ID card that remains more than four months.
+        national_id_card_reverse_note:        If you upload a national ID card, please also upload the back of side
+        face_and_national_id_card_note:       Please upload a photo of yourself and the uploaded ID with your face photo.
+        license_note:                         Please upload driver license that remains more than four months.
+        license_reverse_note:                 If you upload a driver license, please also upload the back of side
+        face_and_license_note:                Please upload a photo of yourself and the uploaded ID with your face photo.
+
+        passport:               Passport
+        national_id:            National ID
+        driver_license:         Driver License
+        enter_passport:         Enter your passport number here
+        enter_national_id:      Enter your national ID card number here
+        enter_license:          Enter your license number here
+        identification_number:  Identification number
+        identification_type:    Identification Paper Type
+        front:                  Front
+        back:                   Back
+        save:                   save
+      status:
+        waiting:                Waiting for
+        staff_approve:          staffs approve your whitelist information.
+        receive_update:         You will receive updates email about the progess soon.
+        can_update:             You still can update your information, after approved, any changes will be re-checked by our staffs again.
+
   operator:
     home:
       index:
@@ -29,4 +79,14 @@ en:
         send_all_customers: Sent to all customers?
         subject:            Subject
         sent_datetime:      Sent date & time
-  
+    wallet_kyc_papers:
+      form:
+        submission_certificate: "Submission certificate"
+        please_fill: "Please fill at least 1 of 3 tabs below."
+
+
+
+
+
+
+

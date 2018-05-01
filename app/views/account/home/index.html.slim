@@ -6,7 +6,7 @@
       = form_for @kyc_paper, as: :kyc, url: account_basic_info_path, html: {id: "basic-info", "data-aos" => "fade-right"} do |f| 
         - if @kyc_paper.errors.any?
           .top-link
-            p Errors
+            p = t(".errors")
             - @kyc_paper.errors.full_messages.each do |message|
               p
                 | ・
@@ -14,34 +14,34 @@
         .rw.sp-30
           .cl.md-6
             label
-              | Country
-              = select_tag "kyc[country]", options_for_select(ISO3166::Country.translations.collect{|c| [c[1], c[0]]}, selected: @kyc_paper&.country), prompt: "Select your country of residence"
+              = t("activerecord.attributes.account/kyc_paper.country")
+              = select_tag "kyc[country]", options_for_select(ISO3166::Country.translations.collect{|c| [c[1], c[0]]}, selected: @kyc_paper&.country), prompt: t(".select_country")
             label
-              | Full name
-              = f.text_field :full_name
+              = t("activerecord.attributes.account/kyc_paper.full_name")
+              = f.text_field :full_name, placeholder: t(".enter_full_name")
             label
-              | Date of birth
+              = t("activerecord.attributes.account/kyc_paper.birth_date")
               = f.date_field :birth_date
             label
-              | Address
-              = f.text_field :street
-              = f.text_field :street2
+              = t(".address")
+              = f.text_field :street, placeholder: t("activerecord.attributes.account/kyc_paper.street")
+              = f.text_field :street2, placeholder: t("activerecord.attributes.account/kyc_paper.street2")
             .rw.sp-15
               .cl.sm-6
                 label
-                  | State/Region
-                  = f.text_field :region
+                  = t("activerecord.attributes.account/kyc_paper.region")
+                  = f.text_field :region, placeholder: t(".enter_region")
               .cl.sm-6
                 label
-                  | City
-                  = f.text_field :city
+                  = t("activerecord.attributes.account/kyc_paper.city")
+                  = f.text_field :city, placeholder: t(".enter_city")
           .cl.md-6
             label
-              | Amount want to buy
-              = select_tag "kyc[amount_range]", options_for_select([AMOUNT_RANGE, [0,1,2]].transpose, selected: @kyc_paper&.amount_range), promt: "Choose amount you want to buy in crowdsale"
+              = t(".amount")
+              = select_tag "kyc[amount_range]", options_for_select([AMOUNT_RANGE, [0,1,2]].transpose, selected: @kyc_paper&.amount_range), promt: t(".select_amount")
             label
-              | BTC Wallet Address
-              = f.text_field :btc_address
+              = t(".btc_address")
+              = f.text_field :btc_address, placeholder: t(".enter_address")
         .rw
           .cl
-            button.dis type="submit" = @kyc_paper.id.present? ? "save" : "next"
+            button.dis type="submit" = @kyc_paper.id.present? ? t(".save") : t(".next")

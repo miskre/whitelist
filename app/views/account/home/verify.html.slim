@@ -14,127 +14,123 @@
         .rw.sp-30
           = hidden_field_tag :paper_type, @kyc_paper.type
           .cl.md-6
-            label Identification Paper Type
+            label = t(".identification_type")
             .radio-group
               .radio
                 input#passport name="kyc[type]" type="radio" value="Wallet::PassportKycPaper"
-                label for="passport"  Passport
+                label for="passport" = t(".passport")
               .radio
                 input#national-id name="kyc[type]" type="radio" value="Wallet::NationalIdCardKycPaper"
-                label for="national-id"  National ID
+                label for="national-id"  = t(".national_id")
               .radio
                 input#driver-license name="kyc[type]" type="radio" value="Wallet::LicenseKycPaper"
-                label for="driver-license"  Driver License
+                label for="driver-license"  = t(".driver_license")
           .cl.md-6
             label
-              | Identification Number
+              = t("identification_number")
               #kyc_passport_number_block
-                = f.text_field :passport_number, placeholder: "Enter your passport number here", class: "kyc_passport_number"
+                = f.text_field :passport_number, placeholder: t(".enter_passport"), class: "kyc_passport_number"
                 .kyc_passport_number_error
               #kyc_national_id_card_number_block
-                = f.text_field :national_id_card_number, placeholder: "Enter your national ID card number here", class: "kyc_national_id_card_number"
+                = f.text_field :national_id_card_number, placeholder: t(".enter_national_id"), class: "kyc_national_id_card_number"
                 .kyc_national_id_card_number_error
               #kyc_license_number_block
-                = f.text_field :license_number, placeholder: "Enter your license number here", class: "kyc_license_number"
+                = f.text_field :license_number, placeholder: t(".enter_license"), class: "kyc_license_number"
                 .kyc_license_number_error
         .rw
           .cl
             ul.bg.md-2.lg-3#passport-session
               li
-                label.mb-10 Passport
+                label.mb-10 = t("activerecord.attributes.account/kyc_paper.passport")
                 label.image-picker.back style="background-image: url(#{@kyc_paper.passport.url(:croppable)})"
                   = f.file_field :passport, class: "passport_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_6_html' }
-                  p #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".passport_note_html")
+                  p #{ t "activerecord.attributes.account/kyc_paper.file_size" }
               li
-                label.mb-10 Selfie with Identification
+                label.mb-10 = t("activerecord.attributes.account/kyc_paper.face_and_passport")
                 label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_passport.url(:croppable)})"
                   = f.file_field :face_and_passport, class: "face_and_passport_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_11' }
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".face_and_passport_note")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
             ul.bg.md-2.lg-3#national-id-session
               li
-                label.mb-10 Front
+                label.mb-10 = t(".front")
                 label.image-picker.front style="background-image: url(#{@kyc_paper.national_id_card.url(:croppable)})"
                   = f.file_field :national_id_card, class: "national_id_card_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_12' }
-                    br
-                    | Please upload national ID card that remains more than four months.
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".national_id_card_note_html")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
               li
-                label.mb-10 Back
+                label.mb-10 = t(".back")
                 label.image-picker.back style="background-image: url(#{@kyc_paper.national_id_card_reverse.url(:croppable)})"
                   = f.file_field :national_id_card_reverse, class: "national_id_card_reverse_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | If you upload a national ID card, please also upload the back of side
+                    = t(".national_id_card_reverse_note")
 
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
               li
-                label.mb-10 Selfie with Identification
+                label.mb-10 = t("activerecord.attributes.account/kyc_paper.face_and_national_id_card")
                 label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_national_id_card.url(:croppable)})"
                   = f.file_field :face_and_national_id_card, class: "face_and_national_id_card_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_11' }
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".face_and_national_id_card_note")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
             ul.bg.md-2.lg-3#license-session
               li
-                label.mb-10 Front
+                label.mb-10 = t(".front")
                 label.image-picker.front style="background-image: url(#{@kyc_paper.license.url(:croppable)})"
                   = f.file_field :license, class: "license_class"
                 .top-link  
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_12' }
-                    br
-                    | #{ t 'wallet.kyc_papers.item_13' }
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".license_note")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
               li
-                label.mb-10 Back
+                label.mb-10 = t(".back")
                 label.image-picker.back style="background-image: url(#{@kyc_paper.license_reverse.url(:croppable)})"
                   = f.file_field :license_reverse, class: "license_reverse_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_14' }
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".license_reverse_note")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
               li
-                label.mb-10 Selfie with Identification
+                label.mb-10 = t("activerecord.attributes.account/kyc_paper.face_and_license")
                 label.image-picker.selfie style="background-image: url(#{@kyc_paper.face_and_license.url(:croppable)})"
                   = f.file_field :face_and_license, class: "face_and_license_class"
                 .top-link
                   p
-                    strong 【※#{ t 'wallet.kyc_papers.caution' }】
+                    strong 【※#{ t ".caution" }】
                     br
                     br
-                    | #{ t 'wallet.kyc_papers.item_11' }
-                  p.clear-fl-left #{ t 'activerecord.attributes.wallet/kyc_paper.file_size' }
+                    = t(".face_and_license_note")
+                  p.clear-fl-left #{ t "activerecord.attributes.account/kyc_paper.file_size" }
         .rw
           .cl
-            = f.button "save", class: "dis"
+            = f.button t(".save"), class: "dis"

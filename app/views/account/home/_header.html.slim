@@ -1,9 +1,9 @@
 .top-link data-aos="fade-down" 
-  | hi, #{current_user.email}!&nbsp;&nbsp;
-  = link_to "logout", account_sign_out_path
+  = t(".hi", name: current_user.email)
+  = link_to t(".logout"), account_sign_out_path
 .top-link data-aos="fade-down"
-  = link_to "change password", account_account_users_path
+  = link_to t(".change_pass"), account_account_users_path
 .steps data-aos="fade-down" 
-  = link_to "Whitelist Info", account_info_path, class: "#{'a' if params[:action] == "index"}"
-  = link_to "Verify", account_verify_path, class: "#{'a' if ["verify", "update_verify"].include?(params[:action])}"
-  = link_to "Approved Status", account_status_path, class: "#{'a' if params[:action] == "status"}"
+  = link_to t(".basic_info"), account_info_path, class: "#{'a' if params[:action] == "index"}"
+  = link_to t(".verify"), account_verify_path, class: "#{'a' if ["verify", "update_verify"].include?(params[:action])}"
+  = link_to t(".status"), account_status_path, class: "#{'a' if params[:action] == "status"}"
