@@ -44,10 +44,15 @@ en:
         back:                   Back
         save:                   save
       status:
-        waiting:                Waiting for
-        staff_approve:          staffs approve your whitelist information.
-        receive_update:         You will receive updates email about the progess soon.
-        can_update:             You still can update your information, after approved, any changes will be re-checked by our staffs again.
+        pending_approval:       Your application is still pending approval.
+        we_notify:              We will notify you by email if there is any updates on the status of your application.
+        thanks:                 Thank you for supporting
+        whitelist_accepted:     Your whitelist application has been accepted.
+        wish_update_html:       If you wish to update your information you can do so&nbsp;
+        make_change:            If you make any changes, your application will have to be re-approve by our staff.
+        reject_list:            "However we have to reject your application due to:"
+        can_edit_html:          You can edit your information to go through the application process again&nbsp;
+        here:                   here
 
   operator:
     home:

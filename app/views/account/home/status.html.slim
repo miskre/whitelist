@@ -6,33 +6,36 @@
       .status data-aos="fade-up"
         - if @kyc_paper.status == "pending"
           p
-            = t(".waiting")
+            = t(".thanks")
             = image_tag "logo.inline.svg", class: "mh-10", height: "12"
-            = t(".staff_approve")
           p
-            = t(".receive_update")
-            br
-          p = t(".can_update")
+            = t(".pending_approval")
+          p
+            = t(".we_notify")
+        
         - elsif @kyc_paper.status == "accepted"
           p
-            |Thank you for using 
+            = t(".thanks")
             = image_tag "logo.inline.svg", class: "mh-10", height: "12"
-            |this time.
-            br
-            |I'm reporting that your application for whitelist information has been accepted.
+          p
+            = t(".whitelist_accepted")
+          p
+            = t(".wish_update_html")
+            = link_to t(".here"), account_info_path
+            |.&nbsp;
+            = t(".make_change")
         - elsif @kyc_paper.status == "rejected"
           p
-            |Thank you for using 
+            = t(".thanks")
             = image_tag "logo.inline.svg", class: "mh-10", height: "12"
-            |this time.
-            br
-            |Whitelist information which you uploaded was incomplete.
           p
-            |Reasons:
+            = t(".reject_list")
             br
-            - eval(@kyc_paper.message).each do |mess| 
-              |-&nbsp;
-              = mess
-              br
+            - if @kyc_paper.message
+              - eval(@kyc_paper.message).each do |mess| 
+                |-&nbsp;
+                = mess
+                br
           p
-            | Please update your whitelist information. 
+            = t(".can_edit_html")
+            = link_to t(".here"), account_info_path
