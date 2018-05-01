@@ -20,8 +20,8 @@
               = render partial: 'info_table', locals: { user: @kyc_pending_wallet_user }
               div.text-center
                 = link_to 'Back', operator_kyc_pending_wallet_users_path, class: "btn btn-sm btn-primary"
-                = f.submit t('activerecord.attributes.wallet/kyc_paper.accept_button'), name: :accept, class: "btn btn-sm btn-primary m-l-md"
-                = link_to t('activerecord.attributes.wallet/kyc_paper.reject_button'), "javascript:void(0)", class: "rejection-button btn btn-sm btn-primary m-l-md"
+                = f.submit t('activerecord.attributes.account/kyc_paper.accept_button'), name: :accept, class: "btn btn-sm btn-primary m-l-md"
+                = link_to t('activerecord.attributes.account/kyc_paper.reject_button'), "javascript:void(0)", class: "rejection-button btn btn-sm btn-primary m-l-md"
                 
       #rejection-block.col-lg-6
         .ibox.float-e-margins

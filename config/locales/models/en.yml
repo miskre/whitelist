@@ -1,8 +1,44 @@
 en:
   activerecord:
     models:
-      wallet/kyc_paper:          Verified Information
-      wallet/passport_kyc_paper: Verified Information (with Passport)
-      wallet/license_kyc_paper:  Verified Information (with License)
-      wallet/national_id_card_kyc_paper:  Verified Information (with National ID Card)
+      account/kyc_paper:          Verified Information
+      account/passport_kyc_paper: Verified Information (with Passport)
+      account/license_kyc_paper:  Verified Information (with License)
+      account/national_id_card_kyc_paper:  Verified Information (with National ID Card)
+    attributes:
+      account/user:
+        new_password:                New Password
+        password:                    Password
+        password_confirmation:       Password Confirmation
+        email:                       Email
+        agreed:                      Accept the terms and conditions
+      account/kyc_paper:
+        country:     Residential Country
+        full_name:   Full Name
+        birth_date:  Date of birth
+        street:      Street Number/Suburb ( in Roman alphabet )
+        street2:     Building Name/Room Number/Others ( in Roman alphabet )
+        city:        City
+        region:      State/Region
+        regist_date:      Registration Date
+        update_date:      Updated Date
+        accepted:         Approval Status
+        accept_button:    Approval
+        reject_button:    Reject
+        amount_range:     Amout Range
+        btc_address:      BTC Address
+        type:             Passport / Yes / No
+        face_and_passport:                Selfie with passport
+        passport:                         Passport
+        passport_number:                  Passport number
+        national_id_card_number:          National ID card number
+        national_id_card:                 National ID card
+        national_id_card_reverse:         National ID card reverse
+        face_and_national_id_card:        Selfie with national ID card
+        face_and_license:                 Selfie with driver licence
+        license:                          Drivers license/front
+        license_reverse:                  Drivers license/back
+        license_number:                   License number
+        file_size:                        ※File size / 「.jpg/.png」Max / 50MB
 
+      
