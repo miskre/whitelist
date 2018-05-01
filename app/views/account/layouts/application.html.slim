@@ -57,13 +57,14 @@ html
         = link_to "enter whitelist", account_sign_up_path, class: "enter-whitelist", "data-aos": "fade-left",  "data-aos-duration": "1000"
 
     #social-bar data-aos="fade-right" data-aos-duration="1000" 
-      a href="#" 
+      a href="#{TWITTER_LINK}" 
         = image_tag "twitter.v2.svg"
-      a href="#" 
-        = image_tag "facebook.v2.svg"
-      a href="#" 
+      a href="#{MEDIUM_LINK}" 
+        = image_tag "medium.svg"
+      a href="#{REDDIT_LINK}"
+      a href="#{TELEGRAM_LINK}" 
         = image_tag "telegram.v2.svg"
-      a href="#" 
+      a href="#{SLACK_LINK}" 
         = image_tag "slack.v2.svg"
     .remodal-bg
       = yield
