@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410065744) do
+ActiveRecord::Schema.define(version: 20180516035815) do
 
   create_table "kycs", force: :cascade do |t|
     t.date     "birth_date"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180410065744) do
     t.string   "license_number",                         limit: 255
     t.string   "btc_address",                            limit: 255
     t.integer  "amount_range",                           limit: 4
+    t.string   "miskre_wallet_address",                  limit: 255
   end
 
   add_index "kycs", ["user_id"], name: "index_kycs_on_user_id", using: :btree

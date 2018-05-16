@@ -12,10 +12,12 @@ en:
         errors:                 Errors
         address:                Address
         amount:                 Amount want to buy
-        btc_address:            BTC Wallet Address
+        btc_address:            BTC wallet address
+        miskre_wallet_address:  miskre wallet address
         select_country:         Select your country of residence
         select_amount:          Choose amount you want to buy in crowdsale
         enter_address:          Enter your BTC address here
+        enter_miskre_address:   Enter your miskre address
         save:                   save
         next:                   next
         enter_full_name:        Enter full name here

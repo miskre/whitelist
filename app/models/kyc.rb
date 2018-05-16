@@ -6,6 +6,7 @@ class Kyc < ActiveRecord::Base
   default_value_for :type, 'Wallet::PassportKycPaper'
 
   BTC_ADDRESS = /\A^[1-3][a-km-zA-HJ-NP-Z1-9]{25,34}$\z/
+  MISKRE_ADDRESS = /\A^[a-zA-Z0-9]{34}$\z/
   CARD_NUMBER_ONLY = /\A[a-zA-Z0-9 -]+\z/
   PASSPORT_ONLY = /\A[a-zA-Z0-9]+\z/
 
@@ -17,6 +18,7 @@ class Kyc < ActiveRecord::Base
   validates :city,             presence: true, length: { in: 2..35 }, if: :is_save_base_info?
   validates :region, allow_blank: true, length: { in: 2..35 }, if: :is_save_base_info?
   validates :btc_address,      presence: true, format: { with: BTC_ADDRESS }, if: :is_save_base_info?
+  validates :miskre_wallet_address, presence: true, format: { with: MISKRE_ADDRESS }, if: :is_save_base_info?
 
   has_attached_file :face_and_passport, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
   has_attached_file :passport, styles: { croppable: "400x400>" }, unless: :is_save_base_info?
