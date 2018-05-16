@@ -21,7 +21,7 @@ class Operator::BroadcastMail < ActiveRecord::Base
   def mail_params(user)
     rep = {
         "UserID" => user.try!(:id),
-        "UserEmail" => user.try!(:email),
+        "UserName" => user&.kyc&.full_name || user.try!(:email),
         "TimeNow" => Time.now
       }
 
