@@ -11,6 +11,9 @@
     $("#kyc_btc_address").on("change", function() {
       $("#kyc_btc_address").val($("#kyc_btc_address").val().trim());
     });
+    $("#kyc_miskre_wallet_address").on("change", function() {
+      $("#kyc_miskre_wallet_address").val($("#kyc_miskre_wallet_address").val().trim());
+    });
 
     $.validator.addMethod(
       "regex",
@@ -57,6 +60,10 @@
         "kyc[btc_address]": {
           required: true,
           regex: /^[1-3][a-km-zA-HJ-NP-Z1-9]{25,34}$/
+        },
+        "kyc[miskre_wallet_address]": {
+          required: true,
+          regex: /^[a-zA-Z0-9]{34}$/
         }
       },
       messages: {

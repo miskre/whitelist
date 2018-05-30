@@ -42,6 +42,16 @@
             label
               = t(".btc_address")
               = f.text_field :btc_address, placeholder: t(".enter_address")
+            label
+              = t(".miskre_wallet_address")
+              
+              strong 
+                |&nbsp;(
+                |Click&nbsp;
+                = link_to "here", "javascript:void(0)", target: "_blank"
+                |&nbsp;to generate new address
+                |)
+              = f.text_field :miskre_wallet_address, placeholder: t(".enter_miskre_address")
         .rw
           .cl
             button.dis type="submit" = @kyc_paper.id.present? ? t(".save") : t(".next")

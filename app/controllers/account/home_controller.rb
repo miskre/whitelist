@@ -74,7 +74,8 @@ module Account
           :region,
           :city,
           :amount_range,
-          :btc_address
+          :btc_address,
+          :miskre_wallet_address
         )
       end
       def verify_info_params
