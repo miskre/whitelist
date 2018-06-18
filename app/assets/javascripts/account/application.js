@@ -8,3 +8,4 @@
 //= require account/sign_up
 //= require account/sign_in
 //= require account/reset_password 
+//= require account/change_password

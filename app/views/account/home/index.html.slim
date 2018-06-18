@@ -41,16 +41,15 @@
               = select_tag "kyc[amount_range]", options_for_select([AMOUNT_RANGE, [0,1,2]].transpose, selected: @kyc_paper&.amount_range), promt: t(".select_amount")
             label
               = t(".btc_address")
+              .caution-text Please confirm as you will only be able to purchase with this wallet
               = f.text_field :btc_address, placeholder: t(".enter_address")
             label
               = t(".miskre_wallet_address")
               
-              strong 
-                |&nbsp;(
+              .caution-text 
                 |Click&nbsp;
-                = link_to "here", "javascript:void(0)", target: "_blank"
+                = link_to "here", EXPLORER_LINK, target: "_blank"
                 |&nbsp;to generate new address
-                |)
               = f.text_field :miskre_wallet_address, placeholder: t(".enter_miskre_address")
         .rw
           .cl

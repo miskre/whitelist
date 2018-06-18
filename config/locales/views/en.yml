@@ -2,19 +2,19 @@ en:
   account:
     home:
       header:
-        basic_info: "Whitelist Info"
-        verify: "Verify"
-        status: "Approved Status"
+        basic_info: "Info"
+        verify: "Verification"
+        status: "Approval Status"
         logout: "logout"
         change_pass: "change password"
         hi: "hi, %{name}! "
       index:
         errors:                 Errors
         address:                Address
-        amount:                 Amount want to buy
+        amount:                 Expected purchase amount
         btc_address:            BTC wallet address
         miskre_wallet_address:  miskre wallet address
-        select_country:         Select your country of residence
+        select_country:         Country of Nationality
         select_amount:          Choose amount you want to buy in crowdsale
         enter_address:          Enter your BTC address here
         enter_miskre_address:   Enter your miskre address
@@ -25,14 +25,14 @@ en:
         enter_city:             Enter city here
       verify:
         caution:                              Caution
-        passport_note_html:                   Please upload a passport that the expiry date remains more than four months.<br>Please scan the both pages including mug shots. Selfie is not acceptable.<br>Please use a Scan app if you use your phone to take a photo for ID.
-        face_and_passport_note:               Please upload a photo of yourself and the uploaded ID with your face photo.
-        national_id_card_note_html:           Please upload a page with your face photo.<br>Please upload national ID card that remains more than four months.
-        national_id_card_reverse_note:        If you upload a national ID card, please also upload the back of side
-        face_and_national_id_card_note:       Please upload a photo of yourself and the uploaded ID with your face photo.
-        license_note:                         Please upload driver license that remains more than four months.
-        license_reverse_note:                 If you upload a driver license, please also upload the back of side
-        face_and_license_note:                Please upload a photo of yourself and the uploaded ID with your face photo.
+        passport_note_html:                   Attach a picture of your passport
+        face_and_passport_note:               Attach a photo of yourself holding your passport, please include your entire passport and your entire face in the photo
+        national_id_card_note_html:           Attach a picture of the front of your ID
+        national_id_card_reverse_note:        Attach a picture of the back of your ID
+        face_and_national_id_card_note:       Attach a photo of yourself holding your ID, please include your entire ID and your entire face in the photo
+        license_note:                         Attach a picture of the front of your driver license
+        license_reverse_note:                 Attach a picture of the back of your driver license
+        face_and_license_note:                Attach a photo of yourself holding your driver license, please include your entire driver license and your entire face in the photo
 
         passport:               Passport
         national_id:            National ID

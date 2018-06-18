@@ -6,7 +6,7 @@
         h1 login
       - if system_available?
         .top-link data-aos="fade-down" 
-          | or still not in the list?
+          | not on the list?
           = link_to "register now →", account_sign_up_path, class: "ml-10"
         = form_for :session, url: account_sign_in_path, :html => {class: 'login', id: "user-signin"} do |f|
           .rw data-aos="fade-right" 

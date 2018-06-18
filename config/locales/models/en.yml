@@ -28,17 +28,17 @@ en:
         amount_range:     Amout Range
         btc_address:      BTC Address
         type:             Passport / Yes / No
-        face_and_passport:                Selfie with passport
+        face_and_passport:                Picture of you and your passport
         passport:                         Passport
         passport_number:                  Passport number
         national_id_card_number:          National ID card number
         national_id_card:                 National ID card
         national_id_card_reverse:         National ID card reverse
-        face_and_national_id_card:        Selfie with national ID card
-        face_and_license:                 Selfie with driver licence
+        face_and_national_id_card:        Picture of you and your ID
+        face_and_license:                 Picture of you and your driver licence
         license:                          Drivers license/front
         license_reverse:                  Drivers license/back
         license_number:                   License number
-        file_size:                        ※File size / 「.jpg/.png」Max / 50MB
+        file_size:                        ※File size / 「.jpg/.png」Max / 5MB
 
       

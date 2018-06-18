@@ -6,7 +6,7 @@ development:
   <<: *default
   host: localhost
   username: root
-  password: 
+  password: 123456
   database: white_list_dev
 
 # Warning: The database defined as "test" will be erased and

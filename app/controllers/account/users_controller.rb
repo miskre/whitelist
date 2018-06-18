@@ -42,12 +42,17 @@ class Account::UsersController < Account::BaseController
   end
 
   def update
-    @wallet_user.assign_attributes(password_params)
-    @wallet_user.agreed = true
-    if @wallet_user.save
-      redirect_to account_root_path, flash: {success: t('helpers.messages.changed_pw')}
+    if @wallet_user.valid_password? params[:user][:current_password]
+      @wallet_user.assign_attributes(password_params)
+      @wallet_user.agreed = true
+      if @wallet_user.save
+        redirect_to account_root_path, flash: {success: t('helpers.messages.changed_pw')}
+      else
+        flash.now[:error] = t('activerecord.errors.messages.wrong_password')
+        render action: :account
+      end
     else
-      flash.now[:error] = t('activerecord.errors.messages.wrong_password')
+      flash.now[:error] = t('activerecord.errors.messages.wrong_current_password')
       render action: :account
     end
   end

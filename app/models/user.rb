@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     return deleted_at != nil
   end
 
+  def valid_password?(password)
+    self.authenticate(password).present?
+  end
+
   def remove
     update!(deleted_at: Time.now)
   end
